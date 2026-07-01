@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management — TimberPro Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <aside class="admin-sidebar">
+    <div class="sb-brand"><span class="sb-mark">T</span> Timber<span>Pro</span></div>
+    <div class="sb-tag">Admin Panel</div>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10zM13 21h8V11h-8v10zM3 21h8v-6H3v6zM13 9h8V3h-8v6z"/></svg> Dashboard</a>
+      <a href="admin-products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg> Products</a>
+      <a href="admin-inventory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg> Inventory</a>
+      <a href="admin-orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg> Orders</a>
+      <a href="admin-quotes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg> RFQ &amp; Quotes</a>
+      <a href="admin-customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Customers</a>
+      <a href="admin-settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    </nav>
+    <div class="sb-foot">Signed in as staff · <a href="index.html">View storefront →</a></div>
+  </aside>
+  <div class="sb-overlay"></div>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <div class="topbar-spacer"></div>
+      <div class="user-chip"><span class="ava">SA</span><span class="meta"><b>Sawmill Admin</b><small>Manager</small></span></div>
+    </header>
+
+    <main class="admin-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+        <span class="sep">›</span><a href="admin-settings.html">Settings</a>
+        <span class="sep">›</span><b>Users</b>
+      </nav>
+      <div class="page-head">
+        <div class="ph-titles"><h1>User Management</h1><p class="welcome">Staff who can sign in to this admin panel.</p></div>
+        <div class="ph-actions">
+          <button class="abtn abtn--primary" id="addUserBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add User</button>
+        </div>
+      </div>
+
+      <nav class="subnav" aria-label="Settings sections">
+        <a href="admin-settings-company.html">Company</a>
+        <a href="admin-settings-users.html" class="is-active">Users</a>
+        <a href="admin-settings-roles.html">Roles &amp; Permissions</a>
+        <a href="admin-settings-email.html">Email</a>
+        <a href="admin-settings-system.html">System</a>
+      </nav>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="atable">
+            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th><th style="text-align:right">Actions</th></tr></thead>
+            <tbody id="userRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="data/products.js"></script>
+<script src="data/admin-seed.js"></script>
+<script src="assets/admin-store.js"></script>
+<script src="assets/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.AdminStore, UI = window.AdminUI;
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function fmtDate(iso) { return window.AdminStore.formatDate(iso); }
+  function initials(name) { return (name || "?").split(/\s+/).map(function (w) { return w.charAt(0); }).join("").slice(0, 2).toUpperCase(); }
+
+  function roleName(id) { var r = S.getRole(id); return r ? r.name : (id || "—"); }
+  function roleOptions(sel) {
+    return S.getRoles().map(function (r) {
+      return '<option value="' + esc(r.id) + '"' + (r.id === sel ? " selected" : "") + '>' + esc(r.name) + '</option>';
+    }).join("");
+  }
+
+  function render() {
+    var rows = S.getUsers();
+    if (!rows.length) { el("userRows").innerHTML = '<tr><td colspan="6" class="empty">No users yet — add your first staff account.</td></tr>'; return; }
+    el("userRows").innerHTML = rows.map(function (u) {
+      return '<tr>' +
+        '<td><div class="cust-line"><b>' + esc(u.name) + '</b><small>' + esc(initials(u.name)) + '</small></div></td>' +
+        '<td>' + esc(u.email || "—") + '</td>' +
+        '<td>' + esc(roleName(u.role)) + '</td>' +
+        '<td><span class="pill pill--' + (u.status === "active" ? "in" : "out") + '">' + (u.status === "active" ? "Active" : "Inactive") + '</span></td>' +
+        '<td>' + fmtDate(u.created) + '</td>' +
+        '<td style="text-align:right">' +
+          '<button class="abtn abtn--ghost abtn--sm" data-edit="' + esc(u.id) + '">Edit</button> ' +
+          '<button class="abtn abtn--ghost abtn--sm" data-del="' + esc(u.id) + '">Delete</button>' +
+        '</td></tr>';
+    }).join("");
+    document.querySelectorAll("#userRows [data-edit]").forEach(function (b) { b.addEventListener("click", function () { openForm(b.getAttribute("data-edit")); }); });
+    document.querySelectorAll("#userRows [data-del]").forEach(function (b) { b.addEventListener("click", function () { removeUser(b.getAttribute("data-del")); }); });
+  }
+
+  function openForm(id) {
+    var u = id ? S.getUser(id) : { name: "", email: "", role: (S.getRoles()[0] || {}).id, status: "active" };
+    if (!u) return;
+    var body =
+      '<div class="field"><label for="u_name">Full name</label><input id="u_name" value="' + esc(u.name) + '"></div>' +
+      '<div class="field"><label for="u_email">Email</label><input id="u_email" type="email" value="' + esc(u.email || "") + '"></div>' +
+      '<div class="field"><label for="u_pass">' + (id ? "New password (leave blank to keep current)" : "Password") + '</label><input id="u_pass" type="password" autocomplete="new-password"></div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label for="u_role">Role</label><select id="u_role">' + roleOptions(u.role) + '</select></div>' +
+        '<div class="field"><label for="u_status">Status</label><select id="u_status">' +
+          '<option value="active"' + (u.status === "active" ? " selected" : "") + '>Active</option>' +
+          '<option value="inactive"' + (u.status !== "active" ? " selected" : "") + '>Inactive</option>' +
+        '</select></div>' +
+      '</div>';
+    var foot = '<button class="abtn abtn--ghost" onclick="AdminUI.closeDrawer()">Cancel</button>' +
+               '<button class="abtn abtn--primary" id="saveUserBtn">Save user</button>';
+    var d = UI.openDrawer(id ? "Edit User" : "Add User", body, foot);
+    var saveBtn = d.querySelector("#saveUserBtn");
+    saveBtn.addEventListener("click", function () {
+      var name = d.querySelector("#u_name").value.trim();
+      var email = d.querySelector("#u_email").value.trim();
+      var pass = d.querySelector("#u_pass").value;
+      if (!name) { UI.toast("Please enter a name"); return; }
+      if (!email) { UI.toast("Please enter an email"); return; }
+      if (!id && !pass) { UI.toast("Please set a password for the new user"); return; }
+      var payload = { id: u.id, name: name, email: email, role: d.querySelector("#u_role").value, status: d.querySelector("#u_status").value };
+      if (pass) payload.password = pass;
+      saveBtn.disabled = true;
+      S.saveUser(payload).then(function () {
+        UI.closeDrawer(); render(); UI.toast(id ? "User updated" : "User added");
+      }).catch(function (err) { saveBtn.disabled = false; UI.toast(err && err.message ? err.message : "Save failed"); });
+    });
+  }
+
+  function removeUser(id) {
+    var u = S.getUser(id); if (!u) return;
+    if (!window.confirm("Delete user “" + u.name + "”? This cannot be undone.")) return;
+    S.deleteUser(id).then(function () { render(); UI.toast("User deleted"); })
+      .catch(function (err) { UI.toast(err && err.message ? err.message : "Delete failed"); });
+  }
+
+  el("addUserBtn").addEventListener("click", function () { openForm(null); });
+  S.init().then(render);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote — TimberPro</title>
+  <meta name="description" content="Request a quotation (RFQ) from TimberPro for custom milling, bulk timber and made-to-order products. Tell us your specs and timeline and we'll quote you back.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Timber<span>Pro</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="track.html">Track Order</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="quote.html" class="btn btn--outline btn--sm is-active" style="color:var(--sand);border-color:rgba(255,255,255,.25)">Request Quote</a>
+        <a href="cart.html" class="cart-link" aria-label="Cart">Cart<span class="cart-count">0</span></a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Page head ===== -->
+    <section class="section section--shop" style="background-image: url('img/shop.jpg');">
+      <div class="container">
+        <h1 style="margin:0">Request a Quote</h1>
+      </div>
+    </section>
+
+    <!-- ===== Form + aside ===== -->
+    <section class="section">
+      <div class="container contact-layout">
+
+        <!-- Left: RFQ form -->
+        <div class="contact-main">
+          <h2>Tell us what you need</h2>
+          <p class="lead" style="margin-top:-6px;margin-left:0;margin-right:0">For custom milling, bulk orders and made-to-order timber. Fill in your specs and timeline — we'll prepare a quotation and reply to you.</p>
+
+          <form class="contact-form" data-quote-form novalidate>
+
+            <!-- 1. Customer Information -->
+            <h3 class="rfq-step">Customer Information</h3>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="name">Full name <span style="color:red;">*</span></label>
+                <input id="name" name="name" type="text" placeholder="Ahmad Rashid" required>
+              </div>
+              <div class="form-row">
+                <label for="company">Company name</label>
+                <input id="company" name="company" type="text" placeholder="Bina Jaya Sdn Bhd">
+              </div>
+            </div>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="email">Email address <span style="color:red;">*</span></label>
+                <input id="email" name="email" type="email" placeholder="ahmad@binajaya.com.my" required>
+              </div>
+              <div class="form-row">
+                <label for="phone">Phone number <span style="color:red;">*</span></label>
+                <input id="phone" name="phone" type="tel" placeholder="+60 12-345 6789" required>
+              </div>
+            </div>
+
+            <!-- 2. Product Selection -->
+            <h3 class="rfq-step">Product Selection</h3>
+            <div class="form-row">
+              <label for="product">Product <span style="color:red;">*</span></label>
+              <select id="product" name="product" data-quote-product required>
+                <option value="">Loading products…</option>
+              </select>
+            </div>
+
+            <!-- 3. Quantity Needed -->
+            <h3 class="rfq-step">Quantity Needed</h3>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="quantity">Quantity <span style="color:red;">*</span></label>
+                <input id="quantity" name="quantity" type="number" min="1" step="1" value="1" required>
+              </div>
+              <div class="form-row">
+                <label for="unit">Unit</label>
+                <input id="unit" name="unit" type="text" data-quote-unit placeholder="pcs" readonly>
+              </div>
+            </div>
+
+            <!-- 4. Project Requirements -->
+            <h3 class="rfq-step">Project Requirements</h3>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="dimLength">Length (mm)</label>
+                <input id="dimLength" name="dimLength" type="number" min="0" step="1" placeholder="2400">
+              </div>
+              <div class="form-row">
+                <label for="dimWidth">Width (mm)</label>
+                <input id="dimWidth" name="dimWidth" type="number" min="0" step="1" placeholder="150">
+              </div>
+            </div>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="dimThickness">Thickness (mm)</label>
+                <input id="dimThickness" name="dimThickness" type="number" min="0" step="1" placeholder="50">
+              </div>
+              <div class="form-row">
+                <label for="finish">Finish / grade preference</label>
+                <input id="finish" name="finish" type="text" placeholder="Planed, kiln-dried…">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="message">Details &amp; specifications <span style="color:red;">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Describe your project, machining, tolerances, delivery location, or anything else we should know." required></textarea>
+            </div>
+
+            <!-- 5. Timeline -->
+            <h3 class="rfq-step">Timeline</h3>
+            <div class="checkout-row2">
+              <div class="form-row">
+                <label for="neededBy">Needed by</label>
+                <input id="neededBy" name="neededBy" type="date">
+              </div>
+              <div class="form-row">
+                <label for="timeline">Urgency</label>
+                <select id="timeline" name="timeline">
+                  <option value="">Select…</option>
+                  <option value="ASAP">ASAP</option>
+                  <option value="1–2 weeks">Within 1–2 weeks</option>
+                  <option value="1 month">Within 1 month</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 6. Submit RFQ -->
+            <button type="submit" class="btn btn--primary">Submit RFQ</button>
+            <p class="contact-success" data-quote-success hidden>Thanks! Your request for quotation has been submitted — our team will review it and send you a quotation shortly. Reference: <strong data-quote-ref></strong></p>
+          </form>
+        </div>
+
+        <!-- Right: how it works -->
+        <aside class="contact-side">
+          <span class="eyebrow">How it works</span>
+
+          <div class="location">
+            <h3>1 · Submit your RFQ</h3>
+            <p class="location-row">Tell us the product, quantity, dimensions and timeline. The more detail, the faster we can price it.</p>
+          </div>
+
+          <div class="location">
+            <h3>2 · We prepare a quotation</h3>
+            <p class="location-row">Our team reviews your specs, calculates pricing (per-unit / bulk) and delivery by weight &amp; distance.</p>
+          </div>
+
+          <div class="location">
+            <h3>3 · You receive your quote</h3>
+            <p class="location-row">We reply with a formal quotation (PDF), valid for a set period. Approve it and we proceed to order.</p>
+          </div>
+
+          <div class="location">
+            <h3>Prefer to talk?</h3>
+            <p class="location-row">📞 +60 3-2181 4400</p>
+            <p class="location-row">✉️ sales@timberpro.my</p>
+            <p class="location-row">🕒 Mon–Fri 8am–6pm</p>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" style="font-size:1.4rem">Timber<span>Pro</span></a>
+          <p style="margin-top:14px">Premium timber, custom milling and reliable delivery since 1996.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="shop.html?cat=flooring">Flooring</a></li>
+            <li><a href="shop.html?cat=beams">Beams &amp; posts</a></li>
+            <li><a href="quote.html">Request a quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <p style="margin:0">+60 3-2181 4400<br>sales@timberpro.my<br>Mon–Fri, 8am–6pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 TimberPro. Demo store.</span>
+        <span>Built for the Timber project</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
+
+  <!-- ===== Scripts ===== -->
+  <script src="data/products.js"></script>
+  <script src="store.js"></script>
+  <script src="reveal.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Form Validation Script -->
+  <script>
+    (function() {
+      "use strict";
+      
+      var form = document.querySelector("[data-quote-form]");
+      if (!form) return;
+
+      form.addEventListener("submit", function(e) {
+        var requiredFields = form.querySelectorAll("[required]");
+        var emptyFields = [];
+        var fieldLabels = [];
+
+        requiredFields.forEach(function(field) {
+          var value = field.value ? field.value.trim() : "";
+          
+          if (!value) {
+            emptyFields.push(field);
+            var label = form.querySelector("label[for='" + field.id + "']");
+            if (label) {
+              fieldLabels.push(label.textContent.trim());
+              field.style.borderColor = "red";
+              field.style.borderWidth = "2px";
+            }
+          } else {
+            field.style.borderColor = "";
+            field.style.borderWidth = "";
+          }
+        });
+      });
+
+      // Clear border when user starts typing
+      form.querySelectorAll("[required]").forEach(function(field) {
+        field.addEventListener("input", function() {
+          this.style.borderColor = "";
+          this.style.borderWidth = "";
+        });
+        field.addEventListener("change", function() {
+          this.style.borderColor = "";
+          this.style.borderWidth = "";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

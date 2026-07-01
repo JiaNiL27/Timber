@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — TimberPro</title>
+  <meta name="description" content="Enter your details and place your timber order.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Timber<span>Pro</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="track.html">Track Order</a>
+        <a href="services.html">Services</a>        
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="quote.html" class="btn btn--outline btn--sm" style="color:var(--sand);border-color:rgba(255,255,255,.25)">Request Quote</a>
+        <a href="cart.html" class="cart-link" aria-label="Cart">Cart<span class="cart-count">0</span></a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Page head ===== -->
+    <section class="section section--shop" style="background-image: url('img/shop.jpg');">
+      <div class="container">
+        <h1 style="margin:0">Checkout</h1>
+      </div>
+    </section>
+
+    <!-- ===== Checkout wizard (JS toggles steps, fills order data, places order) ===== -->
+    <div data-checkout class="section--checkout">
+      <div class="container section">
+        <div class="checkout-wizard">
+
+          <!-- Progress bar (JS toggles is-active / is-done) -->
+          <ol class="steps" data-steps>
+            <li class="step is-active" data-step-ind="1"><span class="step_num">1</span><span class="step_label">Information &amp; Review</span></li>
+            <li class="step" data-step-ind="2"><span class="step_num">2</span><span class="step_label">Payment</span></li>
+            <li class="step" data-step-ind="3"><span class="step_num">3</span><span class="step_label">Confirmation</span></li>
+          </ol>
+
+          <form data-checkout-form novalidate>
+
+            <!-- ===== Step 1 — Information (left) + Order review (right) ===== -->
+            <section class="checkout-step" data-step="1">
+              <div class="checkout-grid">
+
+                <!-- Left: customer info + delivery address -->
+                <div class="checkout-billing">
+                  <h3>Customer information</h3>
+
+                  <div class="checkout-row2">
+                    <div class="form-row">
+                      <label for="firstName">First name *</label>
+                      <input id="firstName" name="firstName" type="text" required>
+                    </div>
+                    <div class="form-row">
+                      <label for="lastName">Last name *</label>
+                      <input id="lastName" name="lastName" type="text" required>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <label for="company">Company name (optional)</label>
+                    <input id="company" name="company" type="text">
+                  </div>
+
+                  <div class="checkout-row2">
+                    <div class="form-row">
+                      <label for="email">Email address *</label>
+                      <input id="email" name="email" type="email" required>
+                    </div>
+                    <div class="form-row">
+                      <label for="phone">Phone *</label>
+                      <input id="phone" name="phone" type="tel" required>
+                    </div>
+                  </div>
+
+                  <fieldset class="payment delivery-method" data-delivery-method>
+                    <legend>Delivery method</legend>
+                    <label class="payment-opt">
+                      <input type="radio" name="deliveryMethod" value="delivery" checked>
+                      <span><strong>Delivery</strong><small>We ship to your address.</small></span>
+                    </label>
+                    <label class="payment-opt">
+                      <input type="radio" name="deliveryMethod" value="collect">
+                      <span><strong>Self-collect</strong><small>Pick up from our yard — no address needed.</small></span>
+                    </label>
+                  </fieldset>
+
+                  <div data-delivery-fields>
+                  <h3 class="checkout-subhead">Delivery address</h3>
+
+                  <div class="form-row">
+                    <label for="address">Street address *</label>
+                    <input id="address" name="address" type="text" placeholder="House number and street name" required>
+                  </div>
+
+                  <div class="checkout-row2">
+                    <div class="form-row">
+                      <label for="city">Town / City *</label>
+                      <input id="city" name="city" type="text" required>
+                    </div>
+                    <div class="form-row">
+                      <label for="postcode">Postcode / ZIP *</label>
+                      <input id="postcode" name="postcode" type="text" required>
+                    </div>
+                  </div>
+
+                  <div class="checkout-row2">
+                    <div class="form-row">
+                      <label for="state">State / Province *</label>
+                      <input id="state" name="state" type="text" required>
+                    </div>
+                    <div class="form-row">
+                      <label for="country">Country / Region *</label>
+                      <select id="country" name="country" required>
+                        <option value="">Select a country…</option>
+                        <option>Malaysia</option>
+                        <option>Singapore</option>
+                        <option>United States</option>
+                        <option>United Kingdom</option>
+                        <option>Australia</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  </div><!-- /data-delivery-fields -->
+
+                  <div class="pickup-note" data-pickup-note hidden>
+                    <h3 class="checkout-subhead">Pickup location</h3>
+                    <p>Collect from <strong>TimberPro Yard</strong> — No. 66-78, Jalan Upper Lanang, 96000 Sibu, Sarawak. Open Mon–Fri, 8am–6pm. We'll email you when your order is ready.</p>
+                  </div>
+
+                  <div class="form-row">
+                    <label for="notes">Order notes (optional)</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Notes about your order, e.g. delivery instructions."></textarea>
+                  </div>
+                </div>
+
+                <!-- Right: order review -->
+                <aside class="checkout-order">
+                  <h3>Your order</h3>
+                  <div class="order-head"><span>Product</span><span>Subtotal</span></div>
+                  <ul class="order-items" data-order-items></ul>
+                  <div class="order-row"><span>Subtotal</span><strong data-subtotal>$0.00</strong></div>
+                  <div class="order-row"><span>Shipping</span><span class="order-muted" data-shipping>Free shipping</span></div>
+                  <div class="order-row order-row--total"><span>Total</span><strong data-total>$0.00</strong></div>
+
+                  <button type="button" class="btn btn--primary btn--block" data-next>Next: Payment</button>
+                  <a class="checkout-backlink" href="cart.html">&larr; Back to cart</a>
+                </aside>
+
+              </div>
+            </section>
+
+            <!-- ===== Step 2 — Payment ===== -->
+            <section class="checkout-step" data-step="2" hidden>
+              <div class="checkout-narrow">
+                <h3>Payment</h3>
+                <fieldset class="payment">
+                  <legend>Payment method</legend>
+                  <label class="payment-opt">
+                    <input type="radio" name="payment" value="card" checked>
+                    <span><strong>Credit / debit card</strong><small>Secure card payment powered by Stripe.</small></span>
+                  </label>
+                  <div class="card-pay" data-card-pay>
+                    <!-- Stripe Card Element mounts here when a publishable key is configured -->
+                    <div id="card-element" class="card-element"></div>
+                    <div class="card-errors" data-card-errors role="alert"></div>
+                    <p class="stripe-note" data-stripe-note hidden>Card payments aren’t enabled yet — add your Stripe test key in <code>app.js</code> (STRIPE_PK), or choose Cash on delivery.</p>
+                  </div>
+                  <label class="payment-opt">
+                    <input type="radio" name="payment" value="cod">
+                    <span><strong>Cash on delivery</strong><small>Pay with cash when your timber is delivered.</small></span>
+                  </label>
+                </fieldset>
+                <div class="pay-total"><span>Total due</span><strong data-pay-total>$0.00</strong></div>
+                <p class="checkout-msg" data-checkout-msg hidden></p>
+                <div class="step-nav">
+                  <button type="button" class="btn btn--outline" data-prev>&larr; Back</button>
+                  <button type="submit" class="btn btn--primary">Place order</button>
+                </div>
+              </div>
+            </section>
+          </form>
+
+          <!-- ===== Step 3 — Confirmation (revealed after order is placed) ===== -->
+          <section class="checkout-step" data-step="3" hidden>
+            <div class="checkout-done text-center">
+              <div class="checkout-done_icon" aria-hidden="true">&#10003;</div>
+              <h2>Thank you for your order!</h2>
+              <p class="lead">Your order <strong data-order-id></strong> has been received. We'll be in touch shortly to arrange delivery.</p>
+              <div class="btn-row" style="justify-content:center">
+                <a class="btn btn--primary" href="orders.html">View your orders</a>
+                <a class="btn btn--outline" href="shop.html">Continue shopping</a>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" style="font-size:1.4rem">Timber<span>Pro</span></a>
+          <p style="margin-top:14px">Premium timber, custom milling and reliable delivery since 1996.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="shop.html?cat=flooring">Flooring</a></li>
+            <li><a href="shop.html?cat=beams">Beams &amp; posts</a></li>
+            <li><a href="quote.html">Request a quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul style="display:grid;gap:8px">            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <p style="margin:0">1-800-458-5697<br>hello@timberpro.example<br>Mon–Fri, 8am–6pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 TimberPro. Demo store.</span>
+        <span>Built for the Timber project</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
+
+  <!-- ===== Scripts ===== -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="data/products.js"></script>
+  <script src="store.js"></script>
+  <script src="reveal.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

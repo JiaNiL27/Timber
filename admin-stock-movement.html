@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Movement — TimberPro Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="admin-sidebar">
+    <div class="sb-brand"><span class="sb-mark">T</span> Timber<span>Pro</span></div>
+    <div class="sb-tag">Admin Panel</div>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10zM13 21h8V11h-8v10zM3 21h8v-6H3v6zM13 9h8V3h-8v6z"/></svg> Dashboard</a>
+      <a href="admin-products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg> Products</a>
+      <a href="admin-inventory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg> Inventory</a>
+      <a href="admin-orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg> Orders</a>
+      <a href="admin-quotes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg> RFQ &amp; Quotes</a>
+      <a href="admin-customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Customers</a>
+      <a href="admin-settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    </nav>
+    <div class="sb-foot">Signed in as staff · <a href="index.html">View storefront →</a></div>
+  </aside>
+  <div class="sb-overlay"></div>
+
+  <!-- ===== Main ===== -->
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <div class="topbar-spacer"></div>
+      <div class="user-chip"><span class="ava">SA</span><span class="meta"><b>Sawmill Admin</b><small>Manager</small></span></div>
+    </header>
+
+    <main class="admin-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+        <span class="sep">›</span><a href="admin-inventory.html">Inventory</a><span class="sep">›</span><b>Stock Movement</b>
+      </nav>
+      <div class="page-head">
+        <div class="ph-titles">
+          <h1>Stock Movement</h1>
+          <p class="welcome">Record stock coming in (restocks) or going out (damage, adjustments).</p>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <!-- Record form -->
+        <div class="panel">
+          <div class="panel-head"><h2>Record Movement</h2></div>
+          <div class="panel-body">
+            <div class="tabs" role="tablist">
+              <button class="tab is-active" data-tab="in" type="button">Stock In</button>
+              <button class="tab" data-tab="out" type="button">Stock Out</button>
+            </div>
+
+            <form id="moveForm" autocomplete="off">
+              <div class="field"><label>Product <span class="req">*</span></label><select class="sel" id="f-product" style="width:100%"></select></div>
+              <div class="field"><label>Quantity <span class="req">*</span></label><input type="number" id="f-qty" min="1" step="1" placeholder="e.g. 100"></div>
+              <div class="field"><label>Reference</label><input type="text" id="f-ref" placeholder="PO-2041 / ADJ-118"></div>
+
+              <!-- Stock In only -->
+              <div class="field only-in"><label>Supplier <span class="muted">(optional)</span></label><input type="text" id="f-supplier" placeholder="Baltic Timber Co."></div>
+
+              <!-- Stock Out only -->
+              <div class="field only-out" style="display:none"><label>Reason <span class="req">*</span></label>
+                <select class="sel" id="f-reason" style="width:100%">
+                  <option value="Customer Order">Customer Order</option>
+                  <option value="Damaged Goods">Damaged Goods</option>
+                  <option value="Stock Adjustment">Stock Adjustment</option>
+                </select>
+              </div>
+
+              <div class="field"><label>Remarks</label><textarea id="f-remarks" rows="3" placeholder="Optional notes…"></textarea></div>
+
+              <div class="field" id="curStockNote" style="display:none"><div class="inline-info">Current stock: <b id="curStockVal">—</b></div></div>
+
+              <button type="submit" class="abtn abtn--primary btn-block" id="submitBtn">Record Stock In</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- History -->
+        <div class="panel">
+          <div class="panel-head"><h2>Stock Movement History</h2><span class="spacer"></span><span class="sub" id="histCount"></span></div>
+          <div class="panel-body" style="padding:0"><div class="table-wrap">
+            <table class="atable">
+              <thead><tr><th>Date</th><th>Product</th><th>Type</th><th style="text-align:right">Qty</th><th>Reference</th></tr></thead>
+              <tbody id="histTable"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+            </table>
+          </div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="data/products.js"></script>
+<script src="data/admin-seed.js"></script>
+<script src="assets/admin-charts.js"></script>
+<script src="assets/admin-store.js"></script>
+<script src="assets/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.AdminStore, UI = window.AdminUI;
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function fmtDate(iso) { return window.AdminStore.formatDate(iso); }
+
+  var params = new URLSearchParams(location.search);
+  var mode = "in";
+
+  function setMode(m) {
+    mode = m;
+    document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("is-active", t.dataset.tab === m); });
+    document.querySelectorAll(".only-in").forEach(function (n) { n.style.display = m === "in" ? "" : "none"; });
+    document.querySelectorAll(".only-out").forEach(function (n) { n.style.display = m === "out" ? "" : "none"; });
+    el("submitBtn").textContent = m === "in" ? "Record Stock In" : "Record Stock Out";
+  }
+  document.querySelectorAll(".tab").forEach(function (t) { t.addEventListener("click", function () { setMode(t.dataset.tab); }); });
+
+  function showCurStock() {
+    var id = el("f-product").value, item = id ? S.getInventoryItem(id) : null;
+    if (item) { el("curStockNote").style.display = ""; el("curStockVal").textContent = item.stock.toLocaleString("en-US") + " " + item.unit; }
+    else { el("curStockNote").style.display = "none"; }
+  }
+  el("f-product").addEventListener("change", showCurStock);
+
+  function renderHistory() {
+    return S.getMovements().then(function (movements) {
+      el("histCount").textContent = movements.length + (movements.length === 1 ? " record" : " records");
+      if (!movements.length) { el("histTable").innerHTML = '<tr><td colspan="5" class="empty">No stock movements recorded yet.</td></tr>'; return; }
+      el("histTable").innerHTML = movements.slice(0, 50).map(function (m) {
+        var badge = m.type === "in" ? '<span class="mv-badge mv-in">▲ In</span>' : '<span class="mv-badge mv-out">▼ Out</span>';
+        var qty = (m.type === "in" ? "+" : "−") + m.qty;
+        return '<tr><td>' + fmtDate(m.date) + '</td>' +
+          '<td>' + esc(m.productName) + '</td>' +
+          '<td>' + badge + '</td>' +
+          '<td style="text-align:right"><b>' + qty + '</b></td>' +
+          '<td><span class="ref">' + esc(m.reference || "—") + '</span></td></tr>';
+      }).join("");
+    });
+  }
+
+  el("moveForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = {
+      id: el("f-product").value,
+      qty: el("f-qty").value,
+      reference: el("f-ref").value.trim(),
+      remarks: el("f-remarks").value.trim()
+    };
+    if (!data.id) { UI.toast("Please choose a product."); return; }
+    if (!(parseInt(data.qty, 10) > 0)) { UI.toast("Quantity must be a positive number."); return; }
+    var btn = el("submitBtn"); btn.disabled = true;
+    var action;
+    if (mode === "in") { data.supplier = el("f-supplier").value.trim(); action = S.stockIn(data); }
+    else { data.reason = el("f-reason").value; action = S.stockOut(data); }
+    action.then(function () {
+      UI.toast(mode === "in" ? "Stock added." : "Stock removed.");
+      el("f-qty").value = ""; el("f-ref").value = ""; el("f-supplier").value = ""; el("f-remarks").value = "";
+      showCurStock();
+      return renderHistory();
+    }).catch(function (err) { UI.toast("Failed: " + (err && err.message || "could not record movement.")); })
+      .then(function () { btn.disabled = false; });
+  });
+
+  S.init().then(function () {
+    var preselect = params.get("product");
+    el("f-product").innerHTML = '<option value="">Select a product…</option>' +
+      S.getProducts().map(function (p) { return '<option value="' + esc(p.id) + '"' + (p.id === preselect ? " selected" : "") + '>' + esc(p.name) + (p.sku ? " (" + esc(p.sku) + ")" : "") + '</option>'; }).join("");
+    setMode("in");
+    showCurStock();
+    return renderHistory();
+  });
+})();
+</script>
+</body>
+</html>

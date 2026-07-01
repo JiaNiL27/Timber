@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimberPro — Premium Timber, Lumber & Custom Milling</title>
+  <meta name="description" content="Quality timber, flooring, cladding and custom milling. Buy online or request a quote for made-to-order beams and slabs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">Timber<span>Pro</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html" class="is-active">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="track.html">Track Order</a>
+        <a href="services.html">Services</a>        
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="quote.html" class="btn btn--outline btn--sm ">Request Quote</a>
+        <a href="cart.html" class="cart-link" aria-label="Cart">Cart<span class="cart-count">0</span></a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero parallax" data-parallax="0.25"
+             style="background-image:linear-gradient(rgba(28,19,13,.2),rgba(28,19,13,.2)),url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1600&q=70')">
+      <div class="hero_overlay"></div>
+      <div class="container">
+        <div class="measure">
+          <h1 class="reveal" data-delay="80" style="font-size: 80px;color:#E9E4D0;">A wide range of premium quality wood</h1>
+          <p class="lead reveal" data-delay="160" style="color:#f3ece0">From kiln-dried boards and engineered flooring to made-to-order beams and live-edge slabs — milled with care and delivered to your door.</p>
+          <div class="reveal btn-row" data-delay="240">
+            <a href="shop.html" class="btn btn--outline btn--on-dark">Shop Timber</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Intro / about teaser ===== -->
+    <!-- <section class="section">
+      <div class="container grid grid--2 grid--center grid--gap-lg">
+        <div class="reveal reveal--left">
+          <span class="eyebrow">Who we are</span>
+          <h2>Affordable milling services, built on craft</h2>
+          <hr class="divider">
+          <p class="lead">We harvest responsibly and manufacture to order — combining traditional sawmill know-how with modern kiln-drying and precision cutting.</p>
+          <p>Whether you need a single oak board or a structural glulam beam cut to span, our team handles harvesting, manufacturing and shipping end to end.</p>
+          <a href="about.html" class="btn btn--ghost">Learn more about us &rarr;</a>
+        </div>
+        <div class="reveal reveal--right">
+          <img class="card" style="width:100%;aspect-ratio:4/3;object-fit:cover"
+               src="https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=800&q=70"
+               alt="Stacked timber at the sawmill"
+               onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'><rect width=\'400\' height=\'300\' fill=\'%236b4a2e\'/><text x=\'50%\' y=\'50%\' fill=\'%23efe7da\' font-size=\'22\' text-anchor=\'middle\' font-family=\'Georgia\'>Sawmill</text></svg>')">
+        </div>
+      </div>
+    </section> -->
+
+    <!-- ===== Services (4) ===== -->
+    <section class="section section--sand">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section_title_light">About Us</span>
+          <h2 style="color:var(--theme-color-bg_color)">From forest to finished timber</h2>
+          <hr class="divider">
+        </div>
+        <div class="grid grid--4 stagger">
+          <div class="card icon-card" style="padding:28px 22px">
+            <div class="icon-card_icon">
+                <img src="icon/forest.png" alt="Tress Removal">
+            </div>
+            <h3 style="text-align: center; text-transform: uppercase;">Tree Removal</h3>
+            <p class="product-card_meta">Safe, selective harvesting that protects the surrounding woodland.</p>
+            <div class="icon-card_dots">···</div>
+          </div>
+          <div class="card icon-card" style="padding:28px 22px">
+            <div class="icon-card_icon">
+                <img src="icon/timber.png" alt="Timber purchase icon">
+            </div>
+            <h3 style="text-align: center; text-transform: uppercase;">Timber Purchase</h3>
+            <p class="product-card_meta">We buy quality standing and felled timber at fair market rates.</p>
+            <div class="icon-card_dots">···</div>
+          </div>
+          <div class="card icon-card" style="padding:28px 22px">
+            <div class="icon-card_icon">
+               <img src="icon/wood.png" alt="Wood processing icon">
+
+            </div>
+            <h3 style="text-align: center; text-transform: uppercase;">Quality Logging</h3>
+            <p class="product-card_meta">Precision sawing and kiln-drying for stable, ready-to-use stock.</p>
+            <div class="icon-card_dots">···</div>
+          </div>
+          <div class="card icon-card" style="padding:28px 22px">
+            <div class="icon-card_icon">
+              <img src="icon/free-delivery.png" alt="Shipping">
+            </div>
+            <h3 style="text-align: center; text-transform: uppercase;">Truck Shipping</h3>
+            <p class="product-card_meta">Weight-aware delivery scheduling, anywhere you need it.</p>
+            <div class="icon-card_dots">···</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What we do (image + text) ===== -->
+    <section class="section section--whatwedo">
+      <div class="container grid grid--2 grid--center grid--gap-lg">
+        <div class="reveal reveal--left what-media">
+          <img class="card" style="max-width:90%;height:auto;object-fit:cover"
+               src="img/wp-whatwedo.jpg"
+               alt="Stacked logs">
+          <div class="what-callout">
+            <h3>We provide<br>affordable milling<br>services</h3>
+          </div>
+        </div>
+        <div class="reveal reveal--right">
+          <span class="section_title">What we do</span>
+          <h2 style="color:var(--theme-color-text_dark)">Responsible forestry &amp;<br>quality timber</h2>
+          <hr class="divider">
+          <p class="lead">Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+
+          <ol class="what-list">
+            <li><span class="what-num">01.</span> <span style="font-size: large;">Harvesting</span></li>
+            <li><span class="what-num">02.</span> <span style="font-size: large;">Manufacturing</span></li>
+          </ol>
+
+          <a href="services.html" class="btn btn--primary" style="margin-top:18px">Our services &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What we offer (featured cards) ===== -->
+    <section class="section" style="background-color: #E9E4D0;">
+      <div class="container">
+        <div class="section-head section-head--wide reveal">
+          <span class="section_title">What we offer</span>
+          <h2>High-quality milling services and timber products, delivered with excellence, precision and <span class="sc_typed_entry" data-strings="[&quot;skill&quot;,&quot;care&quot;,&quot;&quot;]" data-loop="1" data-cursor="0" data-cursor-char="_" data-speed="80" data-delay="1"></span></h2>
+          <div class="byline">Peter Bowman<br><small>Sawmill Owner</small></div>
+        </div>
+
+        <div class="grid grid--3 stagger" style="align-items:stretch">
+          <article class="card offer-card product-card reveal">
+            <div class="product-card_media"><img src="img/service-image1-890x664.jpg" alt="Building timber"></div>
+            <div class="product-card_body text-center">
+              <h3 class="product-card_title">Building Solutions</h3>
+              <p class="product-card_meta">Dense, seasoned timbers for structural and finish work — cut to your spec.</p>
+              <div style="margin-top:12px"><a href="services.html" class="offer-cta" aria-label="Read more"><span class="offer-cta_label">Read more</span><span class="offer-cta_icon">&rarr;</span></a></div>
+            </div>
+          </article>
+
+          <article class="card offer-card product-card reveal">
+            <div class="product-card_media"><img src="img/service-image2-890x664.jpg" alt="Logging services"></div>
+            <div class="product-card_body text-center">
+              <h3 class="product-card_title">Logging Services</h3>
+              <p class="product-card_meta">Selective harvesting and logistics to keep your project on schedule.</p>
+              <div style="margin-top:12px"><a href="services.html" class="offer-cta" aria-label="Read more"><span class="offer-cta_label">Read more</span><span class="offer-cta_icon">&rarr;</span></a></div>
+            </div>
+          </article>
+
+          <article class="card offer-card product-card reveal">
+            <div class="product-card_media"><img src="img/service-image3-890x664.jpg" alt="Forestry and timber"></div>
+            <div class="product-card_body text-center">
+              <h3 class="product-card_title">Forestry &amp; Timber</h3>
+              <p class="product-card_meta">Sustainably managed sources and quality grading for every order.</p>
+              <div style="margin-top:12px"><a href="services.html" class="offer-cta" aria-label="Read more"><span class="offer-cta_label">Read more</span><span class="offer-cta_icon">&rarr;</span></a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center" style="margin-top:30px">
+          <a href="contact.html" class="btn btn--primary">Contact us &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats counters ===== -->
+    <section class="section section--counters"  style="padding: clamp(48px, 4vw, 100px) 0;">
+      <div class="container">
+        <div class="grid grid--4 stagger">
+          <div class="stat"><div class="stat_num" data-count="1240">0</div><div class="stat_label">Projects</div></div>
+          <div class="stat"><div class="stat_num" data-count="48">0</div><div class="stat_label">People</div></div>
+          <div class="stat"><div class="stat_num" data-count="30">0</div><div class="stat_label">Years</div></div>
+          <div class="stat"><div class="stat_num" data-count="6">0</div><div class="stat_label">Offices</div></div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ===== Testimonials carousel ===== -->
+    <section class="section section--dark">
+      <div class="container container--narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow-dark">The feedback</span>
+          <h2>Trusted by builders &amp; makers</h2>
+        </div>
+        <div class="carousel reveal" data-carousel>
+          <div class="carousel-track">
+            <blockquote class="testimonial">
+              <p>"The oak we ordered was flawless and the bulk pricing saved our project. Delivery was on time despite the volume."</p>
+              <footer>— Nathaniel Jones, Timber-frame builder</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>"Their custom milling team cut a glulam beam to our exact span. Quote came back the next morning. Brilliant service."</p>
+              <footer>— Rachel Brown, Architect</footer>
+            </blockquote>
+            <blockquote class="testimonial">
+              <p>"Live-edge walnut slab of a quality I couldn't find anywhere else. The team helped me pick the right piece."</p>
+              <footer>— Michael Walker, Furniture maker</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-arrow" data-carousel-prev aria-label="Previous">&larr;</button>
+            <div class="carousel-dots" data-carousel-dots></div>
+            <button class="carousel-arrow" data-carousel-next aria-label="Next">&rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA band ===== -->
+    <section class="section section--end text-center">
+      <div class="container reveal">
+        <h2>Need something custom cut?</h2>
+        <p class="lead" >Send us your dimensions and load specs — we'll quote made-to-order beams, posts and slabs within one working day.</p>
+        <a href="quote.html" class="btn btn--primary">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html" style="font-size:1.4rem">Timber<span>Pro</span></a>
+          <p style="margin-top:14px">Premium timber, custom milling and reliable delivery since 1996.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="shop.html?cat=flooring">Flooring</a></li>
+            <li><a href="shop.html?cat=beams">Beams &amp; posts</a></li>
+            <li><a href="quote.html">Request a quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul style="display:grid;gap:8px">            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <p style="margin:0"><span data-company="phone">1-800-458-5697</span><br><span data-company="email">hello@timberpro.example</span><br><span data-company="hours">Mon–Fri, 8am–6pm</span></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 TimberPro. Demo store.</span>
+        <span>Built for the Timber project</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
+
+  <!-- ===== Scripts ===== -->
+  <script src="data/products.js"></script>
+  <script src="store.js"></script>
+  <script src="reveal.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Typed text initializer for inline spans (lightweight) -->
+  <script>
+    (function(){
+      function initTyped(el){
+        try{
+          var raw = el.getAttribute('data-strings')||'[]';
+          var arr = JSON.parse(raw);
+        }catch(e){
+          var arr = [];
+        }
+        if(!arr || !arr.length) return;
+        var speed = parseInt(el.getAttribute('data-speed')) || 60;
+        var delay = parseInt(el.getAttribute('data-delay')) || 300;
+        var loop = el.getAttribute('data-loop') === '1' || el.getAttribute('data-loop') === 'true';
+        var cursorOn = el.getAttribute('data-cursor') !== '0';
+        var cursorChar = el.getAttribute('data-cursor-char') || '_';
+
+        el.innerHTML = '';
+        var textNode = document.createElement('span');
+        el.appendChild(textNode);
+        if(cursorOn){
+          var c = document.createElement('span'); c.className = 'typed-cursor blink'; c.textContent = cursorChar; el.appendChild(c);
+        }
+
+        var i=0, j=0, forward=true;
+        function typeNext(){
+          var str = arr[i]||'';
+          if(j <= str.length && forward){
+            textNode.textContent = str.slice(0,j);
+            j++;
+            if(j>str.length){ forward=false; setTimeout(typeNext, 700); return; }
+            setTimeout(typeNext, speed);
+          } else {
+            // deleting
+            if(j>0){ j--; textNode.textContent = str.slice(0,j); setTimeout(typeNext, Math.max(30, speed/2)); return; }
+            // move to next
+            i = (i+1) % arr.length;
+            forward = true;
+            if(i===0 && !loop) return; // done
+            setTimeout(typeNext, delay);
+          }
+        }
+        setTimeout(typeNext, delay);
+      }
+
+      document.addEventListener('DOMContentLoaded', function(){
+        var els = document.querySelectorAll('.sc_typed_entry');
+        els.forEach(function(el){ initTyped(el); });
+      });
+    })();
+  </script>
+</body>
+</html>
