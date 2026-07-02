@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — TimberPro Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin.css">
+  <style>
+    .login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--sand-soft, #f3ece1); }
+    .login-card { width: 100%; max-width: 380px; background: var(--paper, #fff); border: 1px solid var(--line, #e3d8c8); border-radius: 14px; box-shadow: 0 18px 50px rgba(40,25,12,.14); padding: 34px 30px; }
+    .login-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-size: 26px; color: var(--wood-dark); margin-bottom: 4px; }
+    .login-brand .sb-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 9px; background: var(--amber); color: #fff; font-size: 20px; }
+    .login-sub { color: var(--ink-soft); font-size: 13.5px; margin-bottom: 24px; }
+    .login-err { display: none; margin-bottom: 16px; padding: 10px 13px; border-radius: var(--radius); background: rgba(192,85,43,.12); color: var(--warn, #c0552b); font-size: 13px; }
+    .login-err.show { display: block; }
+    .login-card .abtn { width: 100%; justify-content: center; margin-top: 6px; }
+    .login-hint { margin-top: 18px; font-size: 12px; color: var(--ink-soft); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="loginForm">
+      <div class="login-brand"><span class="sb-mark">T</span> Timber<span style="color:var(--amber)">Pro</span></div>
+      <p class="login-sub">Staff sign-in · Admin Panel</p>
+      <div class="login-err" id="loginErr"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div>
+      <button type="submit" class="abtn abtn--primary" id="loginBtn">Sign in</button>
+      <p class="login-hint">Lost access? Contact your administrator.</p>
+    </form>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+    var form = document.getElementById("loginForm");
+    var err = document.getElementById("loginErr");
+    var btn = document.getElementById("loginBtn");
+    function showErr(msg) { err.textContent = msg; err.classList.add("show"); }
+    // already signed in? skip the form
+    fetch("/api/auth/me").then(function (r) { if (r.ok) location.replace("admin-dashboard.html"); }).catch(function () {});
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      err.classList.remove("show");
+      btn.disabled = true; btn.textContent = "Signing in…";
+      fetch("/api/auth/login", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: document.getElementById("email").value.trim(), password: document.getElementById("password").value })
+      }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok) { location.replace("admin-dashboard.html"); return; }
+          showErr(res.d && res.d.error ? res.d.error : "Sign in failed."); btn.disabled = false; btn.textContent = "Sign in";
+        })
+        .catch(function () { showErr("Can't reach the server. Is it running?"); btn.disabled = false; btn.textContent = "Sign in"; });
+    });
+  })();
+  </script>
+</body>
+</html>
+
+

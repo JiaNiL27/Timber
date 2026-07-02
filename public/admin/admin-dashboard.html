@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — TimberPro Admin</title>
+  <meta name="description" content="TimberPro staff admin — sales, orders, inventory and quotations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- ===== Sidebar (shared markup across admin pages) ===== -->
+  <aside class="admin-sidebar">
+    <div class="sb-brand"><span class="sb-mark">T</span> Timber<span>Pro</span></div>
+    <div class="sb-tag">Admin Panel</div>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="admin-dashboard.html" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10zM13 21h8V11h-8v10zM3 21h8v-6H3v6zM13 9h8V3h-8v6z"/></svg> Dashboard</a>
+      <a href="admin-products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg> Products</a>
+      <a href="admin-inventory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg> Inventory</a>
+      <a href="admin-orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg> Orders</a>
+      <a href="admin-quotes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg> RFQ &amp; Quotes</a>
+      <a href="admin-customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Customers</a>
+      <a href="admin-settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    </nav>
+    <div class="sb-foot">Signed in as staff · <a href="../index.html">View storefront →</a></div>
+  </aside>
+  <div class="sb-overlay"></div>
+
+  <!-- ===== Main ===== -->
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="orderSearch" placeholder="Search recent orders…" aria-label="Search recent orders">
+      </div>
+      <div class="user-chip"><span class="ava">SA</span><span class="meta"><b>Sawmill Admin</b><small>Manager</small></span></div>
+    </header>
+
+    <main class="admin-content">
+      <!-- Breadcrumb + page header -->
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+        <span class="sep">›</span><b>Dashboard</b>
+      </nav>
+      <div class="page-head">
+        <div class="ph-titles">
+          <h1>Dashboard Overview</h1>
+          <p class="welcome">Welcome back — here's what's happening at the mill today.</p>
+        </div>
+        <div class="ph-actions">
+          <button class="abtn abtn--ghost abtn--sm" id="sampleToggle"></button>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <section class="kpi-grid" id="kpiGrid" aria-label="Key metrics"></section>
+
+      <!-- Quick actions -->
+      <p class="section-label">Quick actions</p>
+      <section class="qa-row">
+        <a class="qa-card" href="admin-product-form.html">
+          <span class="qa-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+          <span><b>Add Product</b><small>New catalogue item</small></span>
+        </a>
+        <button class="qa-card" id="qaCreateQuote">
+          <span class="qa-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <span><b>Create Quote</b><small>Build a quotation</small></span>
+        </button>
+        <a class="qa-card" href="admin-inventory.html">
+          <span class="qa-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/></svg></span>
+          <span><b>Manage Inventory</b><small>Stock &amp; alerts</small></span>
+        </a>
+      </section>
+
+      <!-- Charts row -->
+      <section class="dash-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Revenue Trend</h2><span class="sub">Last 6 months</span><span class="spacer"></span><span class="sub" id="revTotal"></span></div>
+          <div class="panel-body"><div class="chart-wrap" id="revChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Sales Trend</h2><span class="sub">Orders / month</span></div>
+          <div class="panel-body"><div class="chart-wrap" id="salesChart"></div></div>
+        </div>
+
+        <!-- Lists row -->
+        <div class="panel">
+          <div class="panel-head"><h2>Recent Orders</h2><span class="spacer"></span><a class="abtn abtn--ghost abtn--sm" href="admin-orders.html">View all</a></div>
+          <div class="panel-body"><div class="dlist" id="recentOrders"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Top Selling Products</h2><span class="spacer"></span><a class="abtn abtn--ghost abtn--sm" href="admin-products.html">View all</a></div>
+          <div class="panel-body"><div class="dlist" id="topProducts"></div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="../data/products.js"></script>
+<script src="../data/admin-seed.js"></script>
+<script src="../assets/admin-charts.js"></script>
+<script src="../assets/admin-store.js"></script>
+<script src="../assets/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.AdminStore, C = window.AdminCharts, UI = window.AdminUI;
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function fmtDate(iso) { return window.AdminStore.formatDate(iso); }
+  function pill(s) { return '<span class="pill pill--' + s + '">' + s.charAt(0).toUpperCase() + s.slice(1) + '</span>'; }
+  function imgFallback(name) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><rect width="40" height="40" fill="#6b4a2e"/><text x="50%" y="56%" fill="#efe7da" font-size="15" text-anchor="middle" font-family="Georgia">' + esc((name || "?").charAt(0)) + '</text></svg>';
+    return "data:image/svg+xml," + encodeURIComponent(svg);
+  }
+
+  var ICONS = {
+    revenue: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    orders:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>',
+    products:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5"/></svg>',
+    customers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>',
+    quotes:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>'
+  };
+  function delta(curr, prev, suffix) {
+    if (prev == null || prev === 0) return '<span class="kpi-delta kpi-delta--flat">' + (suffix || "No prior data") + '</span>';
+    var pct = ((curr - prev) / prev) * 100, up = pct >= 0;
+    return '<span class="kpi-delta kpi-delta--' + (up ? "up" : "down") + '">' + (up ? "▲" : "▼") + " " + Math.abs(pct).toFixed(1) + '% vs last month</span>';
+  }
+
+  function renderKPIs() {
+    var k = S.kpis(), rev = S.revenueByMonth(6), ord = S.ordersByMonth(6);
+    var rN = rev[rev.length - 1].value, rP = rev[rev.length - 2] ? rev[rev.length - 2].value : null;
+    var oN = ord[ord.length - 1].value, oP = ord[ord.length - 2] ? ord[ord.length - 2].value : null;
+    var cards = [
+      { ico: "revenue",  label: "Revenue",            value: S.money(k.revenue), foot: delta(rN, rP) },
+      { ico: "orders",   label: "Orders",             value: k.orders,           foot: delta(oN, oP) },
+      { ico: "products", label: "Products",           value: k.products,         foot: '<span class="kpi-delta kpi-delta--flat">In catalogue</span>' },
+      { ico: "customers",label: "Customers",          value: k.customers,        foot: '<span class="kpi-delta kpi-delta--flat">Total accounts</span>' },
+      { ico: "quotes",   label: "Pending Quotations", value: k.pendingQuotes,    foot: '<span class="kpi-delta kpi-delta--flat">Awaiting reply</span>' }
+    ];
+    el("kpiGrid").innerHTML = cards.map(function (c) {
+      return '<div class="kpi-card"><div class="kpi-top"><div class="kpi-label">' + c.label + '</div>' +
+        '<div class="kpi-ico">' + ICONS[c.ico] + '</div></div>' +
+        '<div class="kpi-value">' + c.value + '</div>' + c.foot + '</div>';
+    }).join("");
+  }
+
+  function renderCharts() {
+    var rev = S.revenueByMonth(6);
+    C.render(el("revChart"), C.line(rev, { money: true }));
+    el("revTotal").textContent = S.money(rev.reduce(function (s, r) { return s + r.value; }, 0)) + " total";
+    C.render(el("salesChart"), C.bar(S.ordersByMonth(6)));
+  }
+
+  var recent = [];
+  function renderRecent(filter) {
+    var rows = recent;
+    if (filter) { var f = filter.toLowerCase(); rows = recent.filter(function (o) { return (o.id + " " + o.customerName + " " + o.company + " " + o.status).toLowerCase().indexOf(f) > -1; }); }
+    if (!rows.length) { el("recentOrders").innerHTML = '<div class="empty">' + (S.sampleOn() ? "No matching orders." : "No orders yet — place one in the storefront, or load sample data above.") + '</div>'; return; }
+    el("recentOrders").innerHTML = rows.map(function (o) {
+      var prod = o.items[0] ? o.items[0].name + (o.items.length > 1 ? " +" + (o.items.length - 1) + " more" : "") : "—";
+      return '<div class="drow"><div class="d-main"><b>' + esc(o.customerName) + '</b><small>' + esc(prod) + '</small></div>' +
+        '<div class="d-side"><span class="amt">' + S.money2(o.total) + '</span>' + pill(o.status) + '</div></div>';
+    }).join("");
+  }
+
+  function renderTop() {
+    var list = S.topProducts(5);
+    if (!list.length) { el("topProducts").innerHTML = '<div class="empty">No sales yet.</div>'; return; }
+    el("topProducts").innerHTML = list.map(function (p) {
+      var img = p.image || imgFallback(p.name);
+      return '<div class="drow"><img class="d-thumb" src="' + esc(img) + '" alt="" onerror="this.onerror=null;this.src=\'' + imgFallback(p.name) + '\'">' +
+        '<div class="d-main"><b>' + esc(p.name) + '</b><small>' + p.qty + ' sold</small></div>' +
+        '<div class="d-side"><span class="amt">' + S.money(p.revenue) + '</span></div></div>';
+    }).join("");
+  }
+
+  function renderSampleToggle() {
+    var on = S.sampleOn();
+    el("sampleToggle").innerHTML = (on ? "● Sample data: On — click to clear" : "○ Load sample data");
+    el("sampleToggle").classList.toggle("abtn--primary", on);
+    el("sampleToggle").classList.toggle("abtn--ghost", !on);
+  }
+
+  function createQuoteDrawer() {
+    var prods = S.getProducts().map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.name) + '</option>'; }).join("");
+    var body = '<p class="drawer-note">Demo preview. The full Quotation Builder (multiple line items, validity date, live preview) lands on the RFQ &amp; Quotes page.</p>' +
+      '<div class="field"><label>Customer name</label><input type="text" placeholder="Daniel Hartwell"></div>' +
+      '<div class="field"><label>Email</label><input type="email" placeholder="name@company.com"></div>' +
+      '<div class="field-row"><div class="field"><label>Product</label><select>' + prods + '</select></div>' +
+      '<div class="field"><label>Quantity</label><input type="number" placeholder="12"></div></div>' +
+      '<div class="field"><label>Notes</label><textarea rows="3" placeholder="Cut to 4.2m span…"></textarea></div>';
+    var foot = '<button class="abtn abtn--ghost" onclick="AdminUI.closeDrawer()">Cancel</button><button class="abtn abtn--primary" id="saveQuoteDemo">Create quote</button>';
+    UI.openDrawer("Create Quote", body, foot);
+    document.getElementById("saveQuoteDemo").addEventListener("click", function () { UI.closeDrawer(); UI.toast("Demo only — quotation builder arrives on the RFQ & Quotes page."); });
+  }
+
+  // init — load products/orders/quotes (DB when the server is running, else embedded) then render
+  el("orderSearch").addEventListener("input", function (e) { renderRecent(e.target.value.trim()); });
+  el("qaCreateQuote").addEventListener("click", createQuoteDrawer);
+  el("sampleToggle").addEventListener("click", function () { S.setSample(!S.sampleOn()); location.reload(); });
+  S.init().then(function () {
+    // sample data only matters offline; on the live DB we show real records
+    if (S.isDbBacked()) el("sampleToggle").style.display = "none"; else renderSampleToggle();
+    renderKPIs(); renderCharts(); renderTop();
+    recent = S.recentOrders(7); renderRecent("");
+  });
+})();
+</script>
+</body>
+</html>
+
+

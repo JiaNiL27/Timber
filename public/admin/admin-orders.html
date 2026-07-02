@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders — TimberPro Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <aside class="admin-sidebar">
+    <div class="sb-brand"><span class="sb-mark">T</span> Timber<span>Pro</span></div>
+    <div class="sb-tag">Admin Panel</div>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10zM13 21h8V11h-8v10zM3 21h8v-6H3v6zM13 9h8V3h-8v6z"/></svg> Dashboard</a>
+      <a href="admin-products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg> Products</a>
+      <a href="admin-inventory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg> Inventory</a>
+      <a href="admin-orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg> Orders</a>
+      <a href="admin-quotes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg> RFQ &amp; Quotes</a>
+      <a href="admin-customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Customers</a>
+      <a href="admin-settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    </nav>
+    <div class="sb-foot">Signed in as staff · <a href="../index.html">View storefront →</a></div>
+  </aside>
+  <div class="sb-overlay"></div>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="orderSearch" placeholder="Search orders…" aria-label="Search orders">
+      </div>
+      <div class="user-chip"><span class="ava">SA</span><span class="meta"><b>Sawmill Admin</b><small>Manager</small></span></div>
+    </header>
+
+    <main class="admin-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+        <span class="sep">›</span><b>Orders</b>
+      </nav>
+      <div class="page-head">
+        <div class="ph-titles"><h1>Orders</h1><p class="welcome">Track and fulfil customer orders.</p></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-body">
+          <div class="od-filters">
+            <div class="field"><label for="fStatus">Status</label>
+              <select class="sel" id="fStatus">
+                <option value="">All statuses</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="processing">Processing</option>
+                <option value="ready">Ready for Delivery</option>
+                <option value="delivered">Delivered</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="field"><label for="fFrom">From date</label><input type="date" id="fFrom"></div>
+            <div class="field"><label for="fTo">To date</label><input type="date" id="fTo"></div>
+            <button class="abtn abtn--ghost abtn--sm" id="fClear" type="button">Clear filters</button>
+          </div>
+          <div class="table-wrap">
+            <table class="atable">
+              <thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th style="text-align:right">Total</th><th>Status</th><th style="text-align:right">Action</th></tr></thead>
+              <tbody id="orderRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../data/products.js"></script>
+<script src="../data/admin-seed.js"></script>
+<script src="../assets/admin-store.js"></script>
+<script src="../assets/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.AdminStore;
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function fmtDate(iso) { return window.AdminStore.formatDate(iso); }
+  var LABELS = { pending: "Pending", confirmed: "Confirmed", processing: "Processing", ready: "Ready for Delivery", delivered: "Delivered", completed: "Completed", cancelled: "Cancelled" };
+  function pill(s) { return s ? '<span class="pill pill--' + s + '">' + (LABELS[s] || s) + '</span>' : "—"; }
+  // local YYYY-MM-DD (matches the <input type="date"> value, so date filtering is timezone-safe)
+  function dayKey(iso) { if (!iso) return ""; var d = new Date(iso); if (isNaN(d)) return ""; return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+
+  function render() {
+    var search = (el("orderSearch") && el("orderSearch").value.trim().toLowerCase()) || "";
+    var fStatus = el("fStatus").value, from = el("fFrom").value, to = el("fTo").value;
+    var rows = S.getOrders().filter(function (o) {
+      if (fStatus && o.status !== fStatus) return false;
+      if (search && (o.id + " " + o.customerName + " " + o.company + " " + o.customerEmail).toLowerCase().indexOf(search) < 0) return false;
+      var k = dayKey(o.date);
+      if (from && (!k || k < from)) return false;
+      if (to && (!k || k > to)) return false;
+      return true;
+    });
+    if (!rows.length) { el("orderRows").innerHTML = '<tr><td colspan="6" class="empty">' + (S.isDbBacked() ? "No orders match these filters." : "Offline — start the server to load orders from the database.") + '</td></tr>'; return; }
+    el("orderRows").innerHTML = rows.map(function (o) {
+      return '<tr>' +
+        '<td><span class="ref">' + esc(o.id) + '</span></td>' +
+        '<td><div class="cust-line"><b>' + esc(o.customerName) + '</b><small>' + esc(o.company || o.customerEmail) + '</small></div></td>' +
+        '<td>' + fmtDate(o.date) + '</td>' +
+        '<td style="text-align:right"><span class="amt">' + S.money2(o.total) + '</span></td>' +
+        '<td>' + pill(o.status) + '</td>' +
+        '<td style="text-align:right"><a class="abtn abtn--ghost abtn--sm" href="admin-order.html?id=' + encodeURIComponent(o.id) + '">View</a></td>' +
+        '</tr>';
+    }).join("");
+  }
+
+  var s = el("orderSearch"); if (s) s.addEventListener("input", render);
+  el("fStatus").addEventListener("change", render);
+  el("fFrom").addEventListener("change", render);
+  el("fTo").addEventListener("change", render);
+  el("fClear").addEventListener("click", function () { el("fStatus").value = ""; el("fFrom").value = ""; el("fTo").value = ""; if (s) s.value = ""; render(); });
+
+  S.init().then(render);
+})();
+</script>
+</body>
+</html>
+
+

@@ -113,7 +113,7 @@ app.post("/api/create-payment-intent", async function (req, res) {
 });
 
 /* ---------- static site (same origin as the API) ---------- */
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(PORT, function () {
   console.log("TimberPro running at http://localhost:" + PORT);

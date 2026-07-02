@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFQ &amp; Quotes — TimberPro Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <aside class="admin-sidebar">
+    <div class="sb-brand"><span class="sb-mark">T</span> Timber<span>Pro</span></div>
+    <div class="sb-tag">Admin Panel</div>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10zM13 21h8V11h-8v10zM3 21h8v-6H3v6zM13 9h8V3h-8v6z"/></svg> Dashboard</a>
+      <a href="admin-products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg> Products</a>
+      <a href="admin-inventory.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg> Inventory</a>
+      <a href="admin-orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg> Orders</a>
+      <a href="admin-quotes.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg> RFQ &amp; Quotes</a>
+      <a href="admin-customers.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> Customers</a>
+      <a href="admin-settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</a>
+    </nav>
+    <div class="sb-foot">Signed in as staff · <a href="../index.html">View storefront →</a></div>
+  </aside>
+  <div class="sb-overlay"></div>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <button class="hamburger" aria-label="Menu">&#9776;</button>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="quoteSearch" placeholder="Search RFQs…" aria-label="Search quotes">
+      </div>
+      <div class="user-chip"><span class="ava">SA</span><span class="meta"><b>Sawmill Admin</b><small>Manager</small></span></div>
+    </header>
+
+    <main class="admin-content">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="admin-dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></a>
+        <span class="sep">›</span><b>RFQ &amp; Quotes</b>
+      </nav>
+      <div class="page-head">
+        <div class="ph-titles"><h1>RFQ &amp; Quotations</h1><p class="welcome">Review requests and build quotations.</p></div>
+        <div class="ph-actions"><button class="abtn abtn--primary" id="newQuote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> New Quotation</button></div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" data-status="">All <span class="tab-n" data-n="all"></span></button>
+        <button class="tab" data-status="pending">Pending <span class="tab-n" data-n="pending"></span></button>
+        <button class="tab" data-status="approved">Approved <span class="tab-n" data-n="approved"></span></button>
+        <button class="tab" data-status="rejected">Rejected <span class="tab-n" data-n="rejected"></span></button>
+        <button class="tab" data-status="expired">Expired <span class="tab-n" data-n="expired"></span></button>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table class="atable">
+            <thead><tr><th>RFQ</th><th>Customer</th><th>Request</th><th>Date</th><th>Valid until</th><th>Status</th><th style="text-align:right">Quoted</th></tr></thead>
+            <tbody id="quoteRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="../data/products.js"></script>
+<script src="../data/admin-seed.js"></script>
+<script src="../assets/admin-store.js"></script>
+<script src="../assets/admin.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.AdminStore, UI = window.AdminUI;
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function fmtDate(iso) { return window.AdminStore.formatDate(iso); }
+  function ymd(d) { return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function pill(s) { return s ? '<span class="pill pill--' + s + '">' + (s.charAt(0).toUpperCase() + s.slice(1)) + '</span>' : "—"; }
+  function opts(values, sel) { return values.map(function (v) { return '<option value="' + v + '"' + (v === sel ? " selected" : "") + '>' + (v.charAt(0).toUpperCase() + v.slice(1)) + '</option>'; }).join(""); }
+  function digits(s) { return String(s == null ? "" : s).replace(/\D/g, ""); }
+  // Plain-text quotation body shared by the email + WhatsApp reply.
+  function quoteText(data, q) {
+    var lines = ["Dear " + (data.name || "customer") + ",", "",
+      "Thank you for your enquiry. Please find our quotation" + (q ? " (RFQ-" + q.id + ")" : "") + " below:", ""];
+    var total = 0;
+    (data.items || []).forEach(function (it) {
+      var sub = it.qty * it.unit; total += sub;
+      lines.push("- " + it.name + " x" + it.qty + " @ " + S.money2(it.unit) + " = " + S.money2(sub));
+    });
+    lines.push("", "Total: " + S.money2(total));
+    if (data.validUntil) lines.push("Valid until: " + fmtDate(data.validUntil));
+    if (data.notes) lines.push("", data.notes);
+    lines.push("", "Regards,", "TimberPro Sales");
+    return lines.join("\n");
+  }
+  function openLink(url) { var a = document.createElement("a"); a.href = url; a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); }
+
+  var QUOTE_ST = ["pending", "approved", "rejected", "expired"];
+  var curStatus = "", curSearch = "";
+  var PRODUCTS = [];
+
+  function counts() {
+    var all = S.getQuotes(), c = { all: all.length, pending: 0, approved: 0, rejected: 0, expired: 0 };
+    all.forEach(function (q) { if (c[q.status] != null) c[q.status]++; });
+    document.querySelectorAll(".tab-n").forEach(function (n) { n.textContent = "(" + (c[n.dataset.n] || 0) + ")"; });
+  }
+
+  function render() {
+    var rows = S.getQuotes().filter(function (q) {
+      if (curStatus && q.status !== curStatus) return false;
+      if (curSearch) { var f = curSearch.toLowerCase(); return (q.id + " " + q.name + " " + q.company + " " + q.email + " " + q.productName).toLowerCase().indexOf(f) > -1; }
+      return true;
+    });
+    if (!rows.length) { el("quoteRows").innerHTML = '<tr><td colspan="7" class="empty">' + (S.isDbBacked() ? "No quotes match." : "Offline — start the server to load quotes from the database.") + '</td></tr>'; return; }
+    el("quoteRows").innerHTML = rows.map(function (q) {
+      return '<tr data-id="' + esc(q.id) + '" style="cursor:pointer">' +
+        '<td><span class="ref">RFQ-' + esc(q.id) + '</span></td>' +
+        '<td><div class="cust-line"><b>' + esc(q.name) + '</b><small>' + esc(q.company || q.email) + '</small></div></td>' +
+        '<td>' + esc(q.productName) + '</td>' +
+        '<td>' + fmtDate(q.date) + '</td>' +
+        '<td>' + fmtDate(q.validUntil) + '</td>' +
+        '<td>' + pill(q.status) + '</td>' +
+        '<td style="text-align:right">' + (q.quotedTotal ? '<span class="amt">' + S.money2(q.quotedTotal) + '</span>' : "—") + '</td></tr>';
+    }).join("");
+    document.querySelectorAll("#quoteRows tr[data-id]").forEach(function (tr) {
+      tr.addEventListener("click", function () { openBuilder(S.getQuote(tr.dataset.id)); });
+    });
+  }
+
+  /* ---------- quotation builder drawer ---------- */
+  function productOptions(sel) {
+    return '<option value="">— select product —</option>' + PRODUCTS.map(function (p) {
+      return '<option value="' + esc(p.id) + '"' + (p.id === sel ? " selected" : "") + '>' + esc(p.name) + '</option>';
+    }).join("");
+  }
+  function lineRow(item) {
+    item = item || {};
+    var div = document.createElement("div"); div.className = "qline";
+    div.innerHTML =
+      '<select class="ql-prod">' + productOptions(item.id) + '</select>' +
+      '<input class="ql-qty" type="number" min="1" value="' + (item.qty || 1) + '">' +
+      '<input class="ql-unit" type="number" min="0" step="0.01" value="' + (item.unit != null ? item.unit : "") + '">' +
+      '<span class="sub">RM0.00</span>' +
+      '<button type="button" class="rm" title="Remove">&times;</button>';
+    return div;
+  }
+  function recalc() {
+    var total = 0;
+    document.querySelectorAll(".qline").forEach(function (row) {
+      var qty = parseInt(row.querySelector(".ql-qty").value, 10) || 0;
+      var unit = parseFloat(row.querySelector(".ql-unit").value) || 0;
+      var sub = qty * unit; total += sub;
+      row.querySelector(".sub").textContent = S.money2(sub);
+    });
+    var t = el("ql-total"); if (t) t.textContent = S.money2(total);
+    return +total.toFixed(2);
+  }
+  function wireLine(row) {
+    row.querySelector(".rm").addEventListener("click", function () { row.remove(); recalc(); });
+    row.querySelector(".ql-prod").addEventListener("change", function () {
+      var p = PRODUCTS.filter(function (x) { return x.id === this.value; }.bind(this))[0];
+      if (p && p.price != null) row.querySelector(".ql-unit").value = p.price;
+      recalc();
+    });
+    row.querySelector(".ql-qty").addEventListener("input", recalc);
+    row.querySelector(".ql-unit").addEventListener("input", recalc);
+  }
+  function gather() {
+    var items = [];
+    document.querySelectorAll(".qline").forEach(function (row) {
+      var id = row.querySelector(".ql-prod").value;
+      var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
+      if (!id) return;
+      items.push({ id: id, name: p ? p.name : "Item", qty: parseInt(row.querySelector(".ql-qty").value, 10) || 1, unit: parseFloat(row.querySelector(".ql-unit").value) || 0 });
+    });
+    return {
+      name: el("q-name").value.trim(), email: el("q-email").value.trim(), phone: el("q-phone").value.trim(),
+      company: el("q-company").value.trim(), validUntil: el("q-valid").value || null,
+      notes: el("q-notes").value.trim(), status: el("q-status").value, items: items
+    };
+  }
+
+  function openBuilder(q) {
+    q = q || null;
+    var seedItems = q && q.items && q.items.length ? q.items
+      : (q && q.productName && q.productName !== "General enquiry"
+        ? [{ id: (PRODUCTS.filter(function (p) { return p.name === q.productName; })[0] || {}).id || "", name: q.productName, qty: q.qty || 1, unit: 0 }]
+        : []);
+    var defValid = q && q.validUntil ? String(q.validUntil).slice(0, 10) : ymd(new Date(Date.now() + 30 * 86400000));
+    var body =
+      '<div class="detail-sec"><h3>Customer</h3>' +
+        '<div class="field"><label>Name</label><input type="text" id="q-name" value="' + esc(q ? q.name : "") + '"></div>' +
+        '<div class="field-row"><div class="field"><label>Email</label><input type="email" id="q-email" value="' + esc(q ? q.email : "") + '"></div>' +
+        '<div class="field"><label>Phone</label><input type="text" id="q-phone" value="' + esc(q ? q.phone : "") + '"></div></div>' +
+        '<div class="field"><label>Company</label><input type="text" id="q-company" value="' + esc(q ? q.company : "") + '"></div>' +
+      '</div>' +
+      '<div class="detail-sec"><h3>Line items</h3>' +
+        '<div class="qline-head"><span>Product</span><span>Qty</span><span>Unit RM</span><span style="text-align:right">Sub</span><span></span></div>' +
+        '<div id="ql-list"></div>' +
+        '<button type="button" class="abtn abtn--ghost abtn--sm" id="ql-add">+ Add line</button>' +
+        '<div class="qtotal"><span>Quoted total</span><b id="ql-total">RM0.00</b></div>' +
+      '</div>' +
+      '<div class="detail-sec"><h3>Terms</h3>' +
+        '<div class="field-row"><div class="field"><label>Valid until</label><input type="date" id="q-valid" value="' + defValid + '"></div>' +
+        '<div class="field"><label>Status</label><select class="sel" id="q-status" style="width:100%">' + opts(QUOTE_ST, q ? q.status : "pending") + '</select></div></div>' +
+        '<div class="field"><label>Notes</label><textarea id="q-notes" rows="3">' + esc(q ? q.message : "") + '</textarea></div>' +
+      '</div>';
+    var foot = '<button class="abtn abtn--ghost" id="q-preview">Preview</button>' +
+      (q ? '<button class="abtn abtn--ghost" id="q-delete" style="color:var(--warn)">Delete</button>' : "") +
+      '<button class="abtn abtn--primary" id="q-save">Save</button>';
+    UI.openDrawer(q ? "Quotation RFQ-" + q.id : "New Quotation", body, foot);
+
+    var listEl = el("ql-list");
+    (seedItems.length ? seedItems : [{}]).forEach(function (it) { var r = lineRow(it); listEl.appendChild(r); wireLine(r); });
+    recalc();
+    el("ql-add").addEventListener("click", function () { var r = lineRow({}); listEl.appendChild(r); wireLine(r); recalc(); });
+
+    el("q-save").addEventListener("click", function () {
+      var data = gather();
+      if (!data.name || !data.email) { UI.toast("Customer name and email are required."); return; }
+      if (q) data.id = q.id;
+      this.disabled = true;
+      S.saveQuote(data).then(function () { UI.closeDrawer(); UI.toast(q ? "Quotation updated." : "Quotation created."); counts(); render(); })
+        .catch(function (e) { UI.toast(e.message); });
+    });
+    if (q) el("q-delete").addEventListener("click", function () {
+      if (!confirm("Delete this RFQ / quotation?")) return;
+      S.deleteQuote(q.id).then(function () { UI.closeDrawer(); UI.toast("Deleted."); counts(); render(); }).catch(function (e) { UI.toast(e.message); });
+    });
+    el("q-preview").addEventListener("click", function () { showPreview(gather(), q); });
+  }
+
+  function showPreview(data, q) {
+    var rows = data.items.map(function (it) {
+      return '<tr><td>' + esc(it.name) + '</td><td class="num">' + it.qty + '</td><td class="num">' + S.money2(it.unit) + '</td><td class="num">' + S.money2(it.qty * it.unit) + '</td></tr>';
+    }).join("") || '<tr><td colspan="4" class="empty">No items.</td></tr>';
+    var total = data.items.reduce(function (s, it) { return s + it.qty * it.unit; }, 0);
+    var body =
+      '<div class="quote-preview">' +
+        '<div class="qp-head"><div class="qp-brand">Timber<span>Pro</span></div>' +
+          '<div class="qp-meta">QUOTATION' + (q ? "<br>RFQ-" + q.id : "") + '<br>Valid until ' + fmtDate(data.validUntil) + '</div></div>' +
+        '<div class="dl"><div class="row"><span>To</span><b>' + esc(data.name) + (data.company ? " · " + esc(data.company) : "") + '</b></div>' +
+          '<div class="row"><span>Email</span><b>' + esc(data.email) + '</b></div>' + (data.phone ? '<div class="row"><span>Phone</span><b>' + esc(data.phone) + '</b></div>' : "") + '</div>' +
+        '<table class="ditems" style="margin-top:14px"><thead><tr><th>Product</th><th class="num">Qty</th><th class="num">Unit</th><th class="num">Subtotal</th></tr></thead>' +
+          '<tbody>' + rows + '</tbody><tfoot><tr><td colspan="3" class="num">Total</td><td class="num" style="color:var(--amber-dark)">' + S.money2(total) + '</td></tr></tfoot></table>' +
+        (data.notes ? '<p style="margin-top:14px;font-size:13px;color:var(--ink-soft)">' + esc(data.notes) + '</p>' : "") +
+      '</div>';
+    var foot = '<div class="qfoot">' +
+      '<button class="abtn abtn--ghost" id="q-back">← Back</button>' +
+      '<button class="abtn abtn--ghost" id="q-pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Download PDF</button>' +
+      '<button class="abtn abtn--ghost" id="q-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.93 1.35-.49.05-.97.24-3.32-.69-2.8-1.1-4.6-3.96-4.74-4.15-.14-.19-1.13-1.5-1.13-2.86 0-1.36.71-2.03.97-2.31.24-.26.53-.32.71-.32h.51c.16.01.39-.06.6.46.24.59.81 2.02.88 2.17.07.15.12.32.02.51-.34.68-.7.65-.44.92-.15.15.31.6.7 1.13.5.69 1.05.92 1.34 1.07.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95z"/></svg> WhatsApp</button>' +
+      '<button class="abtn abtn--primary" id="q-reply">Email reply</button>' +
+      '</div>';
+    UI.openDrawer(q ? "Preview RFQ-" + q.id : "Preview Quotation", body, foot);
+    el("q-back").addEventListener("click", function () { openBuilder(q ? S.getQuote(q.id) : null); });
+
+    // Download the on-screen quotation as a one-click PDF.
+    el("q-pdf").addEventListener("click", function () {
+      if (!window.html2pdf) { UI.toast("PDF library unavailable — check your connection."); return; }
+      var node = document.querySelector(".quote-preview");
+      if (!node) return;
+      var fname = "Quotation-" + (q ? "RFQ-" + q.id : (data.name || "TimberPro").replace(/\s+/g, "-")) + ".pdf";
+      var btn = this; btn.disabled = true; node.classList.add("is-pdf");
+      var done = function () { node.classList.remove("is-pdf"); btn.disabled = false; };
+      window.html2pdf().set({
+        margin: 10, filename: fname, image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, backgroundColor: "#ffffff" },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      }).from(node).save().then(done).catch(function () { done(); UI.toast("Could not generate PDF."); });
+    });
+
+    // Reply (email or WhatsApp): mark approved + persist, then open the channel prefilled.
+    function reply(channel) {
+      if (channel === "email" && !data.email) { UI.toast("No customer email on this RFQ."); return; }
+      if (channel === "wa" && !digits(data.phone)) { UI.toast("No customer phone on this RFQ."); return; }
+      var msg = quoteText(data, q);
+      var url = channel === "wa"
+        ? "https://wa.me/" + digits(data.phone) + "?text=" + encodeURIComponent(msg)
+        : "mailto:" + encodeURIComponent(data.email) + "?subject=" +
+            encodeURIComponent("Quotation" + (q ? " RFQ-" + q.id : "") + " — TimberPro") + "&body=" + encodeURIComponent(msg);
+      openLink(url);
+      // Persist the approval when the DB is connected; offline still sends, just can't save.
+      if (S.isDbBacked()) {
+        var d = {}; for (var k in data) d[k] = data[k]; d.status = "approved"; if (q) d.id = q.id;
+        S.saveQuote(d).then(function () { counts(); render(); UI.toast("Replied — marked approved."); })
+          .catch(function (e) { UI.toast(e.message); });
+      } else {
+        UI.toast("Reply opened. Connect the database to mark it approved.");
+      }
+    }
+    el("q-reply").addEventListener("click", function () { reply("email"); });
+    el("q-wa").addEventListener("click", function () { reply("wa"); });
+  }
+
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.classList.remove("is-active"); });
+      t.classList.add("is-active"); curStatus = t.dataset.status; render();
+    });
+  });
+  el("quoteSearch").addEventListener("input", function (e) { curSearch = e.target.value.trim(); render(); });
+  el("newQuote").addEventListener("click", function () { if (!S.isDbBacked()) { UI.toast("Offline — start the server to create quotations."); return; } openBuilder(null); });
+
+  S.init().then(function () { PRODUCTS = S.getProducts(); counts(); render(); });
+})();
+</script>
+</body>
+</html>
+
+

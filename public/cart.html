@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — TimberPro</title>
+  <meta name="description" content="Review the timber products in your cart, update quantities and proceed to checkout.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/index.html">Timber<span>Pro</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/track.html">Track Order</a>
+        <a href="/services.html">Services</a>        
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/quote.html" class="btn btn--outline btn--sm" style="color:var(--sand);border-color:rgba(255,255,255,.25)">Request Quote</a>
+        <a href="/cart.html" class="cart-link" aria-label="Cart">Cart<span class="cart-count">0</span></a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Page head ===== -->
+    <section class="section section--shop" style="background-image: url('img/shop.jpg');">
+      <div class="container">
+        <h1 style="margin:0">Cart</h1>
+      </div>
+    </section>
+
+    <!-- ===== Cart (filled by app.js initCart) ===== -->
+    <div data-cart class="section--cart">
+      <div class="container section text-center">
+        <p class="lead">Loading cart…</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="/public/index.html" style="font-size:1.4rem">Timber<span>Pro</span></a>
+          <p style="margin-top:14px">Premium timber, custom milling and reliable delivery since 1996.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="/public/shop.html">All products</a></li>
+            <li><a href="/public/shop.html?cat=flooring">Flooring</a></li>
+            <li><a href="/public/shop.html?cat=beams">Beams &amp; posts</a></li>
+            <li><a href="/public/quote.html">Request a quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul style="display:grid;gap:8px">            
+            <li><a href="/public/services.html">Services</a></li>
+            <li><a href="/public/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <p style="margin:0">1-800-458-5697<br>hello@timberpro.example<br>Mon–Fri, 8am–6pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 TimberPro. Demo store.</span>
+        <span>Built for the Timber project</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
+
+  <!-- ===== Scripts ===== -->
+  <script src="data/products.js"></script>
+  <script src="store.js"></script>
+  <script src="reveal.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
