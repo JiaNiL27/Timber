@@ -28,8 +28,8 @@ router.use("/settings", auth.requirePermission("settings"));
 router.use("/users", auth.requirePermission("settings"));
 router.use("/roles", auth.requirePermission("settings"));
 
-/* ---------- image upload (multipart) -> assets/img/products/uploads ---------- */
-const UPLOAD_DIR = path.join(__dirname, "assets", "img", "products", "uploads");
+/* ---------- image upload (multipart) -> public/assets/img/products/uploads ---------- */
+const UPLOAD_DIR = path.join(__dirname, "public", "assets", "img", "products", "uploads");
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOAD_DIR),

@@ -77,6 +77,15 @@
 
   /* ---------- product cache load (DB or fallback) ---------- */
   function overlay() { return read(KEYS.overlay, {}); }
+  function fixImagePaths(products) {
+    /* Admin pages are in admin/ subfolder, so relative paths need ../ prefix */
+    return (products || []).map(function (p) {
+      if (p.image && p.image.indexOf("assets/") === 0 && p.image.indexOf("../") !== 0) {
+        return merge(p, { image: "../" + p.image });
+      }
+      return p;
+    });
+  }
   function embeddedProducts() {
     var ov = overlay(), baseIds = {};
     var list = DATA.products.map(function (p) { baseIds[p.id] = 1; return ov[p.id] ? merge(p, ov[p.id]) : p; })
@@ -100,7 +109,7 @@
   function refresh() { _initPromise = loadAll(); return _initPromise; }
   function isDbBacked() { return _dbBacked; }
 
-  function getProducts() { return (_products || (_products = embeddedProducts())).slice(); }
+  function getProducts() { return fixImagePaths((_products || (_products = embeddedProducts())).slice()); }
   function getProduct(id) { return getProducts().filter(function (p) { return p.id === id; })[0] || null; }
 
   /* ---------- product writes (Promise-based) ---------- */

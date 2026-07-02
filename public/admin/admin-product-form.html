@@ -179,7 +179,15 @@
   function showImage(src) {
     currentImage = src || "";
     if (currentImage) {
-      el("imgPreview").src = currentImage; el("imgPreview").style.display = "block";
+      /* For display in admin subfolder, fix relative asset paths */
+      var displaySrc = currentImage;
+      /* Check if this is a relative asset path that needs ../ prefix for admin subfolder */
+      if ((displaySrc.indexOf("assets/") === 0 || displaySrc.indexOf("../assets/") === 0) && displaySrc.indexOf("data:") !== 0) {
+        if (displaySrc.indexOf("../") !== 0) {
+          displaySrc = "../" + displaySrc;  /* Add ../ if not already present */
+        }
+      }
+      el("imgPreview").src = displaySrc; el("imgPreview").style.display = "block";
       el("removeImg").style.display = ""; el("dzText").innerHTML = "Replace image — drop or <b>browse</b>";
     } else {
       el("imgPreview").style.display = "none"; el("removeImg").style.display = "none";
@@ -191,8 +199,16 @@
   function handleFile(file) {
     if (!file || !/^image\//.test(file.type)) { UI.toast("Please choose an image file."); return; }
     el("dzText").textContent = "Uploading…";
-    S.uploadImage(file).then(function (url) { showImage(url); UI.toast("Image added."); })
-      .catch(function () { showImage(""); UI.toast("Upload failed — try a smaller image."); });
+    S.uploadImage(file).then(function (url) { 
+      if (!url) throw new Error("No URL returned");
+      showImage(url); 
+      UI.toast("Image added."); 
+    })
+      .catch(function (err) { 
+        console.error("Image upload failed:", err);
+        showImage(""); 
+        UI.toast("Upload failed — try a smaller image."); 
+      });
   }
   el("dropzone").addEventListener("click", function () { el("f-file").click(); });
   el("dropzone").addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); el("f-file").click(); } });
