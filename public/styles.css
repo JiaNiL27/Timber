@@ -255,11 +255,18 @@ ul { margin: 0; padding: 0; list-style: none; }
 .main-nav a { color: var(--theme-color-extra_text); font-weight: 500; font-size: .95rem; }
 .main-nav a:hover, .main-nav a.is-active { color: var(--theme-color-extra_light); }
 .header-actions { display: flex; align-items: center; gap: 16px; }
-.cart-link { position: relative; color: var(--sand); font-weight: 600; }
+.icon-link {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; color: var(--sand); border-radius: 50%;
+  transition: background-color .15s ease, color .15s ease;
+}
+.icon-link:hover { background: rgba(255,255,255,.08); color: var(--theme-color-extra_light); }
+.icon-link svg { width: 21px; height: 21px; }
+.cart-link { color: var(--sand); }
 .cart-link .cart-count {
-  position: absolute; top: -10px; right: -14px; min-width: 19px; height: 19px; padding: 0 5px;
-  background: var(--amber); color: #fff; font-size: .72rem; font-weight: 700; line-height: 19px;
-  text-align: center; border-radius: 99px;
+  position: absolute; top: -2px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px;
+  background: var(--amber); color: #fff; font-size: .68rem; font-weight: 700; line-height: 18px;
+  text-align: center; border-radius: 99px; border: 1.5px solid var(--wood-darkest);
 }
 .nav-toggle { display: none; background: none; border: 0; color: var(--sand); font-size: 1.6rem; cursor: pointer; }
 @media (max-width: 860px) {
@@ -272,6 +279,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .main-nav.is-open a { padding: 13px 24px; border-bottom: 1px solid rgba(255,255,255,.06); }
   .site-header { position: sticky; }
   .nav-toggle { display: block; }
+  .header-actions .btn--outline.btn--sm { display: none; }
 }
 
 /* ---------- 7. Footer shell ---------- */

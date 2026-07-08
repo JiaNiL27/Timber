@@ -17,15 +17,29 @@
     <div class="container">
       <a class="brand" href="/index.html">Timber<span>Pro</span></a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="/index.html">Home</a>
+        <a href="/index.html" class="is-active">Home</a>
         <a href="/shop.html">Shop</a>
-        <a href="/track.html">Track Order</a>
         <a href="/services.html">Services</a>        
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="header-actions">
-        <a href="/quote.html" class="btn btn--outline btn--sm" style="color:var(--sand);border-color:rgba(255,255,255,.25)">Request Quote</a>
-        <a href="/cart.html" class="cart-link" aria-label="Cart">Cart<span class="cart-count">0</span></a>
+        <a href="/quote.html" class="btn btn--outline btn--sm ">Request Quote</a>
+        <a href="/track.html" class="icon-link" aria-label="Track Order" title="Track Order">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="7" width="13" height="10" rx="1.5"></rect>
+            <path d="M16 10h3.2a1 1 0 0 1 .9.55L21.5 13.5V17a1 1 0 0 1-1 1H19"></path>
+            <circle cx="7.5" cy="18" r="1.6"></circle>
+            <circle cx="17.5" cy="18" r="1.6"></circle>
+          </svg>
+        </a>
+        <a href="/cart.html" class="icon-link cart-link" aria-label="Cart" title="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="20" r="1.4"></circle>
+            <circle cx="18" cy="20" r="1.4"></circle>
+            <path d="M2.5 3h2.2l2.1 11.6a2 2 0 0 0 2 1.65h8.35a2 2 0 0 0 1.97-1.63L21 8H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
       </div>
     </div>
@@ -227,14 +241,14 @@
           <h4>Shop</h4>
           <ul style="display:grid;gap:8px">
             <li><a href="/public/shop.html">All products</a></li>
-            <li><a href="/public/shop.html?cat=flooring">Flooring</a></li>
-            <li><a href="/public/shop.html?cat=beams">Beams &amp; posts</a></li>
+            <li><a href="track.html">Track order</a></li>
             <li><a href="/public/quote.html">Request a quote</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
-          <ul style="display:grid;gap:8px">            
+          <ul style="display:grid;gap:8px">
+            <li><a href="track.html">Track order</a></li>            
             <li><a href="/public/services.html">Services</a></li>
             <li><a href="/public/contact.html">Contact</a></li>
           </ul>

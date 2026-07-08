@@ -647,7 +647,15 @@
         refreshCartCount();
 
         var idEl = root.querySelector("[data-order-id]");
-        if (idEl) idEl.textContent = order.id;
+        if (idEl) {
+          idEl.textContent = order.id;
+          document.addEventListener("timber:order-number-updated", function onNum(e) {
+            if (e.detail.oldId === order.id || e.detail.oldId === idEl.textContent) {
+              idEl.textContent = e.detail.newId;
+              document.removeEventListener("timber:order-number-updated", onNum);
+            }
+          });
+        }
         showStep(3);
       }
 

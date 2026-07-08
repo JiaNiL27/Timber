@@ -70,16 +70,18 @@ router.post("/orders", async (req, res) => {
     const bySlug = {};
     rows.forEach((r) => { bySlug[r.slug] = r; });
 
-    const orderNumber = b.order_number || ("ORD" + Date.now());
+    const placeholderNumber = "PENDING" + Date.now();
     const [o] = await conn.query(
       "INSERT INTO orders (order_number,total,status,delivery_method,ship_name,ship_company,ship_email,ship_phone,ship_address,ship_city,ship_postcode,ship_state,ship_country,notes) " +
       "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-      [orderNumber, b.total || 0, "pending", cust.deliveryMethod === "collect" ? "collect" : "delivery",
+      [placeholderNumber, b.total || 0, "pending", cust.deliveryMethod === "collect" ? "collect" : "delivery",
         ((cust.firstName || "") + " " + (cust.lastName || "")).trim() || null, cust.company || null,
         cust.email || null, cust.phone || null, cust.address || null, cust.city || null,
         cust.postcode || null, cust.state || null, cust.country || null, cust.notes || null]
     );
     const orderId = o.insertId;
+    const orderNumber = "ORD" + String(orderId).padStart(6, "0");
+    await conn.query("UPDATE orders SET order_number = ? WHERE id = ?", [orderNumber, orderId]);
 
     // seed the timeline with the first step (drives the Track Order page)
     await conn.query(

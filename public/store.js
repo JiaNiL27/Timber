@@ -186,9 +186,19 @@
     if (API) {
       var cust = order.customer || {};
       apiPost("/api/orders", {
-        order_number: order.id, total: order.subtotal, customer: cust, items: order.items,
+        total: order.subtotal, customer: cust, items: order.items,
         payment: { method: cust.payment || "cod", status: cust.payment === "card" ? "success" : "pending" }
-      }).catch(function () {});   // background persist; localStorage already holds it
+      }).then(function (res) {
+        if (res && res.order_number) {
+          var list = read(KEYS.orders, []);
+          var i = list.findIndex(function (o) { return o.id === order.id; });
+          if (i !== -1) {
+            var oldId = order.id;
+            list[i].id = res.order_number; write(KEYS.orders, list); order.id = res.order_number;
+            document.dispatchEvent(new CustomEvent("timber:order-number-updated", { detail: { oldId: oldId, newId: res.order_number } }));
+          }
+        }
+      }).catch(function () {});   // background persist; localStorage already holds the timestamp fallback
     }
     return order;
   }
