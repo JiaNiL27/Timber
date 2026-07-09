@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist — TimberPro</title>
+  <meta name="description" content="Products you've saved to your TimberPro wishlist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bebas+Neue&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* page-specific layout only — everything else reuses styles.css */
+    .wish-wrap { overflow-x:auto; }
+    .wish-table { width:100%; border-collapse:collapse; min-width:720px; }
+    .wish-table thead th {
+      background:#e7e0d2; text-align:left; padding:20px 16px;
+      font-family:"Bebas Neue",sans-serif; letter-spacing:.06em; font-size:1rem;
+      color:var(--ink,#2a2621); text-transform:uppercase; font-weight:400;
+    }
+    .wish-table tbody td { padding:20px 16px; border-bottom:1px solid var(--line,#e6e1d8); vertical-align:middle; }
+    .wish-table tbody tr:last-child td { border-bottom:1px solid var(--line,#e6e1d8); }
+    .wish-col-check { width:56px; text-align:center; }
+    .wish-col-media { width:150px; }
+    .wish-col-action { width:200px; text-align:right; }
+    .wish-remove {
+      background:none; border:0; cursor:pointer; font-size:1.5rem; line-height:1;
+      color:var(--ink-soft,#8a8175); padding:0 10px 0 0;
+    }
+    .wish-remove:hover { color:#b23b3b; }
+    .wish-thumb { width:118px; height:96px; object-fit:cover; border-radius:6px; background:#f4f1ea; display:block; }
+    .wish-cell-media { display:flex; align-items:center; gap:14px; }
+    .wish-name { font-weight:600; color:var(--ink,#2a2621); text-decoration:none; }
+    .wish-name:hover { text-decoration:underline; }
+    .wish-price { color:var(--ink,#2a2621); font-weight:600; }
+    .wish-stock { color:var(--ink,#2a2621); font-weight:600; }
+    .wish-stock.is-out { color:#b23b3b; }
+    .wish-stock.is-quote { color:var(--brand,#a97b4f); }
+    input.wish-check { width:18px; height:18px; accent-color:var(--brand,#a97b4f); cursor:pointer; }
+    /* bottom toolbar */
+    .wish-toolbar {
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+      padding:26px 16px; border-top:2px solid var(--line,#e6e1d8); margin-top:6px;
+    }
+    .wish-toolbar .spacer { flex:1 1 40px; }
+    .wish-actions-select {
+      padding:12px 16px; border:1px solid var(--line,#cfc7b8); border-radius:4px;
+      background:#fff; font:inherit; color:var(--ink,#2a2621); min-width:170px;
+    }
+    @media (max-width:640px) {
+      .wish-toolbar { flex-direction:column; align-items:stretch; }
+      .wish-toolbar .spacer { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/index.html">Timber<span>Pro</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/services.html">Services</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="/quote.html" class="btn btn--outline btn--sm ">Request Quote</a>
+        <a href="/track.html" class="icon-link" aria-label="Track Order" title="Track Order">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="7" width="13" height="10" rx="1.5"></rect>
+            <path d="M16 10h3.2a1 1 0 0 1 .9.55L21.5 13.5V17a1 1 0 0 1-1 1H19"></path>
+            <circle cx="7.5" cy="18" r="1.6"></circle>
+            <circle cx="17.5" cy="18" r="1.6"></circle>
+          </svg>
+        </a>
+        <a href="/cart.html" class="icon-link cart-link" aria-label="Cart" title="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="20" r="1.4"></circle>
+            <circle cx="18" cy="20" r="1.4"></circle>
+            <path d="M2.5 3h2.2l2.1 11.6a2 2 0 0 0 2 1.65h8.35a2 2 0 0 0 1.97-1.63L21 8H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Page head ===== -->
+    <section class="section section--shop" style="background-image: url('img/shop.jpg');">
+      <div class="container">
+        <h1 style="margin:0">My Wishlist</h1>
+      </div>
+    </section>
+
+    <!-- ===== Wishlist (rendered from the local cache; app.js handles add-to-cart) ===== -->
+    <div class="section" >
+      <div class="container section">
+      <div id="wishlist-root">
+        <p class="lead text-center">Loading your wishlist…</p>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="/index.html" style="font-size:1.4rem">Timber<span>Pro</span></a>
+          <p style="margin-top:14px">Premium timber, custom milling and reliable delivery since 1996.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="/shop.html">All products</a></li>
+            <li><a href="track.html">Track order</a></li>
+            <li><a href="/quote.html">Request a quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul style="display:grid;gap:8px">
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <p style="margin:0">+60 3-2181 4400<br>sales@timberpro.my<br>Mon–Fri, 8am–6pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 TimberPro. Demo store.</span>
+        <span>Built for the Timber project</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Back to top">&uarr;</button>
+
+  <!-- ===== Scripts ===== -->
+  <script src="data/products.js"></script>
+  <script src="store.js"></script>
+  <script src="reveal.js"></script>
+  <script src="app.js"></script>
+
+  <!-- ===== Wishlist page render (uses the Wishlist.* API from store.js) ===== -->
+  <script>
+    (function () {
+      var root = document.getElementById("wishlist-root");
+      var catalog = {};   // productId -> { stock, type } (for stock status), filled async
+
+      function esc(s) {
+        return String(s).replace(/[&<>"]/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+        });
+      }
+      function refreshCartBadge() {
+        var n = Store.cartCount();
+        document.querySelectorAll(".cart-count").forEach(function (b) {
+          b.textContent = n; b.style.display = n > 0 ? "" : "none";
+        });
+      }
+      // in-cart-able = has a price AND not out of stock
+      function isBuyable(it) {
+        if (it.price == null) return false;
+        var meta = catalog[it.productId];
+        return !(meta && meta.stock != null && meta.stock <= 0);
+      }
+      function stockCell(it) {
+        var meta = catalog[it.productId];
+        if (it.price == null || (meta && meta.type === "quote-only"))
+          return '<span class="wish-stock is-quote">Made to order</span>';
+        if (meta && meta.stock != null)
+          return meta.stock > 0
+            ? '<span class="wish-stock">In stock</span>'
+            : '<span class="wish-stock is-out">Out of stock</span>';
+        return '<span class="wish-stock">In stock</span>';   // snapshot-only fallback
+      }
+
+      function render() {
+        var items = Wishlist.getAll();
+        if (!items.length) {
+          root.innerHTML =
+            '<div class="text-center">' +
+              '<p class="lead">Your wishlist is empty.</p>' +
+              '<a class="btn btn--primary" href="/shop.html">Browse products</a>' +
+            "</div>";
+          return;
+        }
+        var rows = items.map(function (it) {
+          var href = "product.html?id=" + encodeURIComponent(it.productId);
+          var action = isBuyable(it)
+            ? '<button class="btn btn--primary btn--sm" data-wish-add="' + esc(it.productId) + '">Add to Cart</button>'
+            : (it.price == null
+                ? '<a class="btn btn--outline btn--sm" href="quote.html?id=' + encodeURIComponent(it.productId) + '">Request Quote</a>'
+                : '<button class="btn btn--primary btn--sm" disabled>Out of Stock</button>');
+          return '<tr>' +
+              '<td class="wish-col-check"><input type="checkbox" class="wish-check wish-select" value="' + esc(it.productId) + '" aria-label="Select ' + esc(it.name) + '"></td>' +
+              '<td class="wish-col-media">' +
+                '<div class="wish-cell-media">' +
+                  '<button class="wish-remove" data-wish-remove="' + esc(it.productId) + '" aria-label="Remove ' + esc(it.name) + '" title="Remove">&times;</button>' +
+                  '<a href="' + href + '">' + (it.image ? '<img class="wish-thumb" src="' + esc(it.image) + '" alt="" loading="lazy">' : '<span class="wish-thumb"></span>') + "</a>" +
+                "</div>" +
+              "</td>" +
+              '<td><a class="wish-name" href="' + href + '">' + esc(it.name) + "</a></td>" +
+              '<td class="wish-price">' + Store.formatPrice(it.price == null ? null : it.price) + "</td>" +
+              "<td>" + stockCell(it) + "</td>" +
+              '<td class="wish-col-action">' + action + "</td>" +
+            "</tr>";
+        }).join("");
+
+        root.innerHTML =
+          '<div class="wish-wrap"><table class="wish-table">' +
+            '<thead><tr>' +
+              '<th class="wish-col-check"><input type="checkbox" class="wish-check" id="wish-all" aria-label="Select all"></th>' +
+              "<th></th>" +
+              "<th>Product Name</th><th>Unit Price</th><th>Stock Status</th><th></th>" +
+            "</tr></thead>" +
+            "<tbody>" + rows + "</tbody>" +
+          "</table></div>" +
+          '<div class="wish-toolbar">' +
+            '<select class="wish-actions-select" id="wish-action" aria-label="Bulk action">' +
+              '<option value="">Actions</option>' +
+              '<option value="add">Add to Cart</option>' +
+              '<option value="remove">Remove</option>' +
+            "</select>" +
+            '<button class="btn btn--primary" id="wish-apply">Apply&nbsp;&nbsp;Action</button>' +
+            '<span class="spacer"></span>' +
+            '<button class="btn btn--primary" id="wish-add-selected">Add Selected to Cart</button>' +
+            '<button class="btn btn--primary" id="wish-add-all">Add All to Cart</button>' +
+          "</div>";
+      }
+
+      function selectedIds() {
+        return [].slice.call(root.querySelectorAll(".wish-select:checked")).map(function (c) { return c.value; });
+      }
+      function allIds() {
+        return Wishlist.getAll().map(function (it) { return it.productId; });
+      }
+      function addToCart(ids) {
+        var byId = {};
+        Wishlist.getAll().forEach(function (it) { byId[it.productId] = it; });
+        var addedIds = [];
+        ids.forEach(function (id) {
+          if (byId[id] && isBuyable(byId[id])) { Store.addToCart(id, 1); addedIds.push(id); }
+        });
+        if (addedIds.length) {
+          refreshCartBadge();
+          // once in the cart, drop it from the wishlist (server-side) so the row
+          // won't reappear on refresh — only not-yet-carted items remain.
+          addedIds.forEach(function (id) { Wishlist.remove(id); });   // fires wishlist:change -> re-render
+        }
+        return addedIds.length;
+      }
+
+      // delegated: survives re-renders
+      document.addEventListener("click", function (e) {
+        var rm = e.target.closest("[data-wish-remove]");
+        if (rm) { e.preventDefault(); Wishlist.remove(rm.getAttribute("data-wish-remove")); return; }
+
+        var addOne = e.target.closest("[data-wish-add]");
+        if (addOne) { e.preventDefault(); addToCart([addOne.getAttribute("data-wish-add")]); return; }
+
+        if (e.target.closest("#wish-apply")) {
+          e.preventDefault();
+          var act = (document.getElementById("wish-action") || {}).value;
+          var ids = selectedIds();
+          if (!ids.length || !act) return;
+          if (act === "add") addToCart(ids);
+          else if (act === "remove") ids.forEach(function (id) { Wishlist.remove(id); });
+          return;
+        }
+        if (e.target.closest("#wish-add-selected")) { e.preventDefault(); addToCart(selectedIds()); return; }
+        if (e.target.closest("#wish-add-all")) { e.preventDefault(); addToCart(allIds()); return; }
+      });
+      // select-all toggles every row checkbox
+      document.addEventListener("change", function (e) {
+        if (e.target.id !== "wish-all") return;
+        var on = e.target.checked;
+        root.querySelectorAll(".wish-select").forEach(function (c) { c.checked = on; });
+      });
+
+      document.addEventListener("wishlist:change", render);
+      // stock status needs the catalog (async); paint immediately, repaint once it's in
+      if (window.Store && Store.getProducts) {
+        Store.getProducts().then(function (ps) {
+          (ps || []).forEach(function (p) { catalog[p.id] = { stock: p.stock, type: p.type }; });
+          render();
+        }).catch(function () {});
+      }
+      render();   // first paint from the local cache (server sync + catalog re-fire render)
+    })();
+  </script>
+</body>
+</html>

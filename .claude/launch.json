@@ -12,7 +12,8 @@
       "name": "timber-server",
       "runtimeExecutable": "node",
       "runtimeArgs": ["server.js"],
-      "port": 4321
+      "port": 4321,
+      "autoPort": true
     }
   ]
 }

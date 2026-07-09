@@ -27,6 +27,10 @@
     return fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
       .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); });
   }
+  function apiDelete(path) {
+    return fetch(path, { method: "DELETE" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); });
+  }
 
   /* ---------- low-level storage ---------- */
   function read(key, fallback) {
@@ -221,17 +225,87 @@
       .catch(function () { return { offline: true }; });
   }
 
-  /* ---------- wishlist ---------- */
-  function getWishlist() { return read(KEYS.wishlist, []); }
-  function inWishlist(productId) { return getWishlist().indexOf(productId) > -1; }
-  // toggles membership; returns true if now in the wishlist
-  function toggleWishlist(productId) {
-    var list = getWishlist();
-    var i = list.indexOf(productId);
-    if (i > -1) { list.splice(i, 1); write(KEYS.wishlist, list); return false; }
-    list.push(productId); write(KEYS.wishlist, list); return true;
+  /* ---------- wishlist (anonymous, server-backed) ----------
+     The visitor is identified by the httpOnly `anon_id` cookie the API sets —
+     the client never sees or manages it. A local cache mirrors the server so
+     has()/getAll()/count() are synchronous (no fetch per render). Mutations
+     update the cache optimistically, persist in the background, and roll the
+     one change back on failure. On file:// (no server) it degrades to a
+     localStorage-only wishlist so the offline prototype still works. */
+  // Synchronous catalog lookup for a snapshot. getProduct() is async (returns a
+  // Promise), but wishlist mutations run on a click when _catalog is already
+  // loaded — so read it directly here and fall back to a bare id if not.
+  function productSnapshot(id) {
+    var p = (_catalog && _catalog.products || []).filter(function (x) { return x.id === id; })[0];
+    return p
+      ? { productId: id, name: p.name, price: (p.price == null ? null : p.price), image: p.image || null }
+      : { productId: id, name: id, price: null, image: null };
   }
-  function wishlistCount() { return getWishlist().length; }
+  var _wish = read(KEYS.wishlist, []);        // [{ productId, name, price, image }]
+  // migrate any old id-only array (["slug", ...]) to the object shape, once
+  if (_wish.length && typeof _wish[0] === "string") {
+    _wish = _wish.map(function (id) { return productSnapshot(id); });
+    write(KEYS.wishlist, _wish);
+  }
+  function persistWish() { write(KEYS.wishlist, _wish); }
+  function wishIndex(id) { for (var i = 0; i < _wish.length; i++) if (_wish[i].productId === id) return i; return -1; }
+  function fireWishChange() { try { document.dispatchEvent(new CustomEvent("wishlist:change")); } catch (e) {} }
+  function toItem(product) {
+    var id = product.id || product.productId;
+    return { productId: id, name: product.name || id,
+             price: (product.price == null ? null : product.price), image: product.image || null };
+  }
+
+  var Wishlist = {
+    // hydrate the cache from the server (no-op offline); corrects any local drift
+    init: function () {
+      if (!API) return Promise.resolve(_wish);
+      return apiGet("/api/wishlist").then(function (d) {
+        _wish = (d && d.items) || [];
+        persistWish(); fireWishChange();
+        return _wish;
+      }).catch(function () { return _wish; });
+    },
+    getAll: function () { return _wish.slice(); },
+    count:  function () { return _wish.length; },
+    has:    function (id) { return wishIndex(id) > -1; },
+    add: function (product) {
+      if (!product) return false;
+      var item = toItem(product);
+      if (!item.productId || wishIndex(item.productId) > -1) return false;
+      _wish.push(item); persistWish(); fireWishChange();
+      if (API) apiPost("/api/wishlist", item).catch(function () {
+        var i = wishIndex(item.productId);
+        if (i > -1) { _wish.splice(i, 1); persistWish(); fireWishChange(); }   // roll back
+      });
+      return true;
+    },
+    remove: function (id) {
+      var i = wishIndex(id);
+      if (i < 0) return false;
+      var removed = _wish.splice(i, 1)[0]; persistWish(); fireWishChange();
+      if (API) apiDelete("/api/wishlist/" + encodeURIComponent(id)).catch(function () {
+        _wish.push(removed); persistWish(); fireWishChange();                  // roll back
+      });
+      return true;
+    },
+    // accepts a product object (preferred, carries the snapshot) or a bare id;
+    // returns true if the item is now in the wishlist
+    toggle: function (product) {
+      var id = (product && (product.id || product.productId)) || product;
+      if (wishIndex(id) > -1) { this.remove(id); return false; }
+      // a full product object carries its own snapshot; a bare id is looked up
+      this.add(typeof product === "object" && product ? product : productSnapshot(id));
+      return true;
+    }
+  };
+
+  /* legacy Store.* wishlist API — delegates to Wishlist so existing UI (heart
+     buttons in app.js, the header badge) keeps working with no changes. */
+  function getWishlist() { return _wish.map(function (w) { return w.productId; }); }
+  function inWishlist(productId) { return Wishlist.has(productId); }
+  function toggleWishlist(productId) { return Wishlist.toggle(productId); }
+  function wishlistCount() { return Wishlist.count(); }
 
   /* ---------- reviews ---------- */
   // stored as { productId: [ { name, rating, comment, createdAt } ] }
@@ -292,4 +366,8 @@
     addReview: addReview,
     reviewSummary: reviewSummary
   };
+
+  // Wishlist is also exposed on its own so the new API can be called directly.
+  global.Wishlist = Wishlist;
+  Wishlist.init();   // hydrate the cache from the server once per page load
 })(window);

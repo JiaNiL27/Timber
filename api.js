@@ -7,8 +7,25 @@
 "use strict";
 
 const express = require("express");
+const crypto = require("crypto");
 const pool = require("./db");
 const router = express.Router();
+
+/* ---------- anonymous visitor id (cookie, no login) ----------
+   Reads the `anon_id` cookie or mints a UUID and sets it (HttpOnly, 1 year).
+   No cookie-parser dependency: we read req.headers.cookie directly and set
+   via express's native res.cookie(). Call this at the top of each route that
+   needs to know "whose wishlist is this". */
+const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000;
+function ensureAnonId(req, res) {
+  const m = (req.headers.cookie || "").match(/(?:^|;\s*)anon_id=([^;]+)/);
+  let id = m ? decodeURIComponent(m[1]) : "";
+  if (!id) {
+    id = crypto.randomUUID();
+    res.cookie("anon_id", id, { httpOnly: true, sameSite: "lax", maxAge: ONE_YEAR_MS });
+  }
+  return id;
+}
 
 /* ---------- GET /api/catalog — same shape as window.__TIMBER_DATA__ ---------- */
 router.get("/catalog", async (req, res) => {
@@ -41,8 +58,7 @@ router.get("/catalog", async (req, res) => {
       tags: tagsBy[p.id] || [],
       finishes: finBy[p.id] || [],
       image: p.image,
-      short: p.short_desc,
-      description: p.description,
+      short: p.short_desc,      description: p.description,
       dimensions: { length_mm: p.length_mm, width_mm: p.width_mm, thickness_mm: p.thickness_mm },
       bulkTiers: tiersBy[p.id] || []
     }));
@@ -249,6 +265,62 @@ router.get("/settings/site", async (req, res) => {
   } catch (e) {
     console.error("[api] site settings:", e.message);
     res.status(500).json({ error: "Lookup failed." });
+  }
+});
+
+/* ---------- GET /api/wishlist — all items for the current visitor ---------- */
+router.get("/wishlist", async (req, res) => {
+  const anonId = ensureAnonId(req, res);
+  try {
+    const [rows] = await pool.query(
+      "SELECT product_id, name, price, image_url, added_at FROM wishlist_items WHERE anon_id = ? ORDER BY added_at DESC",
+      [anonId]
+    );
+    res.json({ items: rows.map((r) => ({
+      productId: r.product_id,
+      name: r.name,
+      price: r.price == null ? null : +r.price,
+      image: r.image_url,
+      addedAt: r.added_at
+    })) });
+  } catch (e) {
+    console.error("[api] wishlist get:", e.message);
+    res.status(500).json({ error: "Wishlist fetch failed." });
+  }
+});
+
+/* ---------- POST /api/wishlist — add one item ----------
+   body: { productId, name, price, image }. Duplicate (same product for the
+   same visitor) is a silent no-op via ON DUPLICATE KEY UPDATE — no error. */
+router.post("/wishlist", async (req, res) => {
+  const anonId = ensureAnonId(req, res);
+  const b = req.body || {};
+  const productId = String(b.productId || "").trim();
+  if (!productId) return res.status(400).json({ error: "productId is required." });
+  try {
+    await pool.query(
+      "INSERT INTO wishlist_items (anon_id, product_id, name, price, image_url) VALUES (?,?,?,?,?) " +
+      "ON DUPLICATE KEY UPDATE id = id",
+      [anonId, productId, b.name || productId,
+        (b.price === "" || b.price == null) ? null : b.price, b.image || null]
+    );
+    res.json({ ok: true });
+  } catch (e) {
+    console.error("[api] wishlist post:", e.message);
+    res.status(500).json({ error: "Wishlist add failed." });
+  }
+});
+
+/* ---------- DELETE /api/wishlist/:productId — remove one item ---------- */
+router.delete("/wishlist/:productId", async (req, res) => {
+  const anonId = ensureAnonId(req, res);
+  try {
+    await pool.query("DELETE FROM wishlist_items WHERE anon_id = ? AND product_id = ?",
+      [anonId, req.params.productId]);
+    res.json({ ok: true });
+  } catch (e) {
+    console.error("[api] wishlist delete:", e.message);
+    res.status(500).json({ error: "Wishlist remove failed." });
   }
 });
 

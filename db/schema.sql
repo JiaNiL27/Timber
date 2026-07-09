@@ -217,6 +217,28 @@ CREATE TABLE wishlists (
   FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/* wishlist_items — ANONYMOUS wishlist (no login required).
+   The owner is the `anon_id` cookie (a UUID) the API sets; product_id holds
+   the storefront SLUG (matches data-wish on the client), and name/price/image
+   are a denormalised snapshot so the list renders without joining products.
+   Kept separate from `wishlists` above (which is the future account-based design).
+
+   FUTURE — real accounts: on signup, claim the guest's rows with a single
+   owner-key swap. No data copy, no schema change:
+     UPDATE wishlist_items SET anon_id = :userId WHERE anon_id = :cookieAnonId;
+   (anon_id is VARCHAR so it holds either a UUID today or a numeric user id later.) */
+CREATE TABLE wishlist_items (
+  id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  anon_id     VARCHAR(64)  NOT NULL,
+  product_id  VARCHAR(64)  NOT NULL,
+  name        VARCHAR(255) NOT NULL,
+  price       DECIMAL(10,2) DEFAULT NULL,       -- NULL for quote-only products
+  image_url   VARCHAR(500)  DEFAULT NULL,
+  added_at    DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_wishlist_owner_product (anon_id, product_id),
+  KEY idx_wishlist_anon (anon_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE quotes (
   id          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   product_id  INT UNSIGNED,                   -- nullable: general quote
