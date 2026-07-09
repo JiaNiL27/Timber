@@ -65,11 +65,13 @@ app.use(express.json());
 
 /* ---------- staff sessions (admin auth) ---------- */
 const session = require("express-session");
+const isProd = process.env.NODE_ENV === "production";
+if (isProd) app.set("trust proxy", 1);   // behind Render's HTTPS reverse proxy
 app.use(session({
   secret: process.env.SESSION_SECRET || "timber-dev-secret-change-me",
   resave: false,
   saveUninitialized: false,
-  cookie: { httpOnly: true, sameSite: "lax", maxAge: 1000 * 60 * 60 * 8 }   // 8 hours
+  cookie: { httpOnly: true, sameSite: "lax", secure: isProd, maxAge: 1000 * 60 * 60 * 8 }   // 8 hours
 }));
 
 /* ---------- auth API (login / logout / me) ---------- */
