@@ -263,7 +263,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .icon-link:hover { background: rgba(255,255,255,.08); color: var(--theme-color-extra_light); }
 .icon-link svg { width: 21px; height: 21px; }
 .cart-link { color: var(--sand); }
-.cart-link .cart-count {
+.cart-link .cart-count,
+.wish-link .wish-count {
   position: absolute; top: -2px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px;
   background: var(--amber); color: #fff; font-size: .68rem; font-weight: 700; line-height: 18px;
   text-align: center; border-radius: 99px; border: 1.5px solid var(--wood-darkest);
